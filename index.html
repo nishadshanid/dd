@@ -85,6 +85,7 @@ main { display: grid; gap: 14px; padding-top: 16px; }
 .item { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 6px 10px; align-items: center; padding: 9px 12px; border-bottom: 1px solid var(--line); }
 .item.done .item-title { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
 .num { font: 500 12px var(--font-mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.item-title { resize: none; field-sizing: content; overflow: hidden; line-height: 1.35; font-family: inherit; color: var(--fg); }
 .item-title { width: 100%; background: transparent; border: 1px solid transparent; border-radius: 4px; padding: 4px 6px; font-size: 14px; }
 .item-title:hover { border-color: var(--line); }
 .item-title:focus { border-color: var(--accent); background: var(--panel-2); outline: none; }
@@ -168,7 +169,13 @@ span.day-text { overflow-wrap: anywhere; }
 .day-add { display: flex; gap: 6px; margin-top: 6px; }
 .day-add input { flex: 1; min-width: 0; background: var(--panel-2); border: 1px dashed var(--line); border-radius: 5px; padding: 6px 9px; font-size: 13px; }
 .day-add .btn { padding: 5px 12px; }
-.view-only .tools { display: none; }
+.view-only .tools > :not(#unlock) { display: none; }
+main > *, .phase, .items, .item { min-width: 0; }
+.unlock-form { display: grid; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; max-width: 460px; }
+.unlock-form p { margin: 0; font-size: 12.5px; color: var(--muted); }
+.unlock-form input { background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px; font: 500 13px var(--font-mono); }
+.unlock-actions { display: flex; gap: 8px; }
+.unlock-msg.err { color: var(--danger); }
 .tools { display: flex; gap: 8px; flex-wrap: wrap; }
 .tools button, .tools label { background: transparent; border: 1px solid var(--line); border-radius: 5px; padding: 4px 10px; font-size: 12px; color: var(--muted); cursor: pointer; }
 .tools button:hover, .tools label:hover { color: var(--fg); border-color: var(--steel); }
@@ -181,6 +188,9 @@ span.day-text { overflow-wrap: anywhere; }
   .story-row details { order: 6; }
   .story-row .times { order: 7; }
   .story-row .icon-btn.del { margin-left: auto; }
+  .phase-head { flex-wrap: wrap; }
+  .phase-title { order: 9; flex-basis: 100%; }
+  .phase-count { margin-left: auto; }
 }
 </style>
 </head>
@@ -213,7 +223,15 @@ span.day-text { overflow-wrap: anywhere; }
       <label for="import">Import backup</label>
       <input id="import" type="file" accept="application/json,.json" hidden>
       <button id="reset" type="button">Reset to original list</button>
+      <button id="unlock" type="button">✎ Edit</button>
+      <button id="lock" type="button" hidden>Lock editing on this device</button>
     </div>
+    <form class="unlock-form" id="unlock-form" hidden>
+      <p>Paste your GitHub key to edit from this device. It stays only in this browser.</p>
+      <input id="gh-token" type="password" autocomplete="off" placeholder="github_pat_…" aria-label="GitHub key">
+      <div class="unlock-actions"><button class="btn" type="submit">Unlock</button><button type="button" class="btn ghost" id="unlock-cancel">Cancel</button></div>
+      <p class="unlock-msg" id="unlock-msg"></p>
+    </form>
     <div class="legend">
       <span><i style="background:var(--short)"></i>Short = Reel/Short</span>
       <span><i style="background:var(--long)"></i>Long = YouTube main</span>
@@ -241,7 +259,11 @@ span.day-text { overflow-wrap: anywhere; }
 
   let state = null;          // { phases: [{id,title,items:[{id,title,format,status}]}] }
   // Editing only on this computer (npm run plan). Anywhere else (GitHub Pages) the page is view-only.
-  const canWrite = ["localhost", "127.0.0.1"].includes(location.hostname);
+  const LOCAL = ["localhost", "127.0.0.1"].includes(location.hostname);
+  let TOKEN = null;
+  try { TOKEN = localStorage.getItem("rtd-gh-token"); } catch (e) {}
+  const GH = !LOCAL && location.protocol === "https:" && !!TOKEN;   // editing via GitHub from any device
+  const canWrite = LOCAL || GH;
   const RO = canWrite ? "" : " disabled";
   if (!canWrite) document.documentElement.classList.add("view-only");
   const KEY = "rtd-plan";
@@ -267,14 +289,56 @@ span.day-text { overflow-wrap: anywhere; }
   // ---- saving: browser storage on this computer ----
   // Opened via `npm run plan` (http://localhost) → saves to docs/doomsday-plan.json on disk.
   // Opened by double-click (file://) → falls back to this browser's storage.
-  const SERVER = location.protocol.startsWith("http");
+  const SERVER = LOCAL && location.protocol.startsWith("http");
+  const HTTP = location.protocol.startsWith("http");
+  // ---- GitHub mode: read/write plan.json in nishadshanid/dd through the GitHub API ----
+  const API = "https://api.github.com/repos/nishadshanid/dd/contents/plan.json";
+  let ghSha = null;
+  const ghHeaders = () => ({ Authorization: "Bearer " + TOKEN, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" });
+  const b64dec = (b) => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g, "")), (c) => c.charCodeAt(0)));
+  const b64enc = (str) => {
+    const bytes = new TextEncoder().encode(str); let bin = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  };
+  async function ghLoad() {
+    const r = await fetch(API + "?ref=main&t=" + Date.now(), { headers: ghHeaders(), cache: "no-store" });
+    if (r.status === 401 || r.status === 403) throw new Error("auth");
+    if (!r.ok) throw new Error("http " + r.status);
+    const j = await r.json(); ghSha = j.sha;
+    return JSON.parse(b64dec(j.content));
+  }
+  async function ghFlush() {
+    if (saving) { again = true; return; }
+    saving = true;
+    const body = clone(state);
+    body._rev = (body._rev || 0) + 1; body.updatedAt = new Date().toISOString();
+    try {
+      const r = await fetch(API, { method: "PUT", headers: Object.assign(ghHeaders(), { "Content-Type": "application/json" }),
+        body: JSON.stringify({ message: "Update plan from browser", branch: "main", sha: ghSha, content: b64enc(JSON.stringify(body, null, 2) + "\n") }) });
+      if (r.status === 409 || r.status === 422) {
+        saving = false; again = false; await load();
+        setSync("The plan changed on another device, so it reloaded. Redo your last change.", true); return;
+      }
+      if (r.status === 401 || r.status === 403) throw new Error("auth");
+      if (!r.ok) throw new Error("http " + r.status);
+      const j = await r.json(); ghSha = j.content.sha;
+      state._rev = body._rev; state.updatedAt = body.updatedAt;
+      setSync("Saved to GitHub");
+    } catch (e) {
+      setSync(e.message === "auth" ? "GitHub key rejected or expired. Tap Lock, then Edit to add a new key." : "Couldn't save to GitHub. Check your connection; your next change retries.", true);
+    }
+    saving = false;
+    if (again) { again = false; ghFlush(); }
+  }
   let saveTimer = null, saving = false, again = false;
   function queueSave() {
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    if (GH) { setSync("Saving…"); clearTimeout(saveTimer); saveTimer = setTimeout(ghFlush, 1500); return; }
     if (!SERVER) { setSync("Saved in this browser only (run npm run plan to save to file)"); return; }
     setSync("Saving…");
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(flush, 400);
+    saveTimer = setTimeout(flush, 1200);
   }
   async function flush() {
     if (saving) { again = true; return; }
@@ -377,7 +441,7 @@ span.day-text { overflow-wrap: anywhere; }
         if (!visible(it)) return "";
         return `<li class="item${it.status === "done" ? " done" : ""}" data-p="${p.id}" data-i="${it.id}">
           <span class="num">${num}</span>
-          <input class="item-title" data-act="title" value="${esc(it.title)}" aria-label="Topic ${num} title" ${ro}>
+          <textarea class="item-title" data-act="title" rows="1" aria-label="Topic ${num} title" ${ro}>${esc(it.title)}</textarea>
           <div class="controls">
             <div class="fmt" role="group" aria-label="Format">${FMT.map(([f, l]) =>
               `<button data-act="fmt" data-f="${f}" aria-pressed="${it.format === f}" title="${FMT_LABEL[f]}" ${ro}>${l}</button>`).join("")}</div>
@@ -618,7 +682,15 @@ span.day-text { overflow-wrap: anywhere; }
   // ---- data ----
   const SEED = {"phases": [{"id": "p1", "title": "X-Men Universe", "items": [{"id": "t1", "title": "X-Men (2000) – Full Movie Recap", "format": "both", "status": "done"}, {"id": "t2", "title": "Wolverine – Complete Character Journey", "format": "both", "status": "done"}, {"id": "t3", "title": "Professor X, Magneto, Mystique, Cyclops & Jean Grey – Character Journeys", "format": "both", "status": "planned"}, {"id": "t4", "title": "X2: X-Men United – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t5", "title": "Nightcrawler – Character Journey", "format": "both", "status": "planned"}, {"id": "t6", "title": "X-Men – Character Identification Quiz", "format": "one", "status": "planned"}, {"id": "t7", "title": "X-Men – Fan Theories & Doomsday Connections", "format": "both", "status": "planned"}]}, {"id": "p2", "title": "Captain America & Original Avengers", "items": [{"id": "t8", "title": "Captain America: The First Avenger – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t9", "title": "Steve Rogers – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t10", "title": "Bucky Barnes – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t11", "title": "The Avengers (2012) – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t12", "title": "Loki – Character Journey", "format": "both", "status": "planned"}, {"id": "t13", "title": "Original Avengers – Quiz", "format": "one", "status": "planned"}]}, {"id": "p3", "title": "Ant-Man, Wasp & Hulk", "items": [{"id": "t14", "title": "Ant-Man – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t15", "title": "Hulk – Complete MCU Character Journey", "format": "both", "status": "planned"}]}, {"id": "p4", "title": "Infinity Saga", "items": [{"id": "t16", "title": "Avengers: Infinity War – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t17", "title": "Thor – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t18", "title": "Avengers: Endgame – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t19", "title": "Infinity Saga – Ultimate Quiz", "format": "one", "status": "planned"}]}, {"id": "p5", "title": "Loki & The Multiverse", "items": [{"id": "t20", "title": "Loki Season 1 – Full Series Recap", "format": "both", "status": "planned"}, {"id": "t21", "title": "Loki Season 2 – Full Series Recap", "format": "both", "status": "planned"}, {"id": "t22", "title": "Loki – From God of Mischief to God of Stories", "format": "both", "status": "planned"}, {"id": "t23", "title": "TVA – Important Characters & Storyline", "format": "both", "status": "planned"}, {"id": "t24", "title": "What Does Loki's Ending Mean for the Multiverse?", "format": "one", "status": "planned"}, {"id": "t25", "title": "Loki – Fan Theories & Predictions", "format": "both", "status": "planned"}]}, {"id": "p6", "title": "Shang-Chi & Spider-Man", "items": [{"id": "t26", "title": "Shang-Chi and the Legend of the Ten Rings – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t27", "title": "Shang-Chi – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t28", "title": "Spider-Man: No Way Home – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t29", "title": "Peter Parker – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t30", "title": "Spider-Man – Multiverse Quiz", "format": "one", "status": "planned"}]}, {"id": "p7", "title": "Captain Marvel & Cosmic Heroes", "items": [{"id": "t31", "title": "Captain Marvel, Monica Rambeau & Ms. Marvel – Complete Character Journeys", "format": "both", "status": "planned"}]}, {"id": "p8", "title": "Wakanda & New Captain America", "items": [{"id": "t32", "title": "Black Panther: Wakanda Forever – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t33", "title": "Shuri & Namor – Complete Character Journeys", "format": "both", "status": "planned"}, {"id": "t34", "title": "Captain America: Brave New World – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t35", "title": "Sam Wilson – From Falcon to Captain America", "format": "both", "status": "planned"}]}, {"id": "p9", "title": "Deadpool & X-Men Return", "items": [{"id": "t36", "title": "Deadpool & Wolverine – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t37", "title": "Deadpool – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t38", "title": "Gambit – Character History & Comic-Book Background", "format": "both", "status": "planned"}]}, {"id": "p10", "title": "Doctor Strange & Scarlet Witch", "items": [{"id": "t39", "title": "Doctor Strange in the Multiverse of Madness – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t40", "title": "Doctor Strange – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t41", "title": "Wanda Maximoff – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t42", "title": "Scarlet Witch – Return Theories & Predictions", "format": "one", "status": "planned"}]}, {"id": "p11", "title": "Thunderbolts & New Avengers", "items": [{"id": "t43", "title": "Thunderbolts* – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t44", "title": "Yelena Belova, Sentry, Red Guardian, Ghost & U.S. Agent – Character Journeys", "format": "both", "status": "planned"}, {"id": "t45", "title": "Bucky Barnes – His Journey After Endgame", "format": "both", "status": "planned"}]}, {"id": "p12", "title": "Fantastic Four & Doctor Doom", "items": [{"id": "t46", "title": "The Fantastic Four: First Steps – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t47", "title": "Doctor Doom – Complete Comic-Book Origin", "format": "both", "status": "planned"}, {"id": "t48", "title": "Doctor Doom – Powers, Intelligence & Technology", "format": "both", "status": "planned"}, {"id": "t49", "title": "Reed Richards vs Doctor Doom – Their Rivalry", "format": "both", "status": "planned"}]}, {"id": "p13", "title": "The Final Doomsday Countdown", "items": [{"id": "t50", "title": "Why Is Doctor Doom Such a Dangerous Villain?", "format": "both", "status": "planned"}, {"id": "t51", "title": "All Confirmed Doomsday Characters – Complete Breakdown", "format": "both", "status": "planned"}, {"id": "t52", "title": "Which Characters Could Form Alliances?", "format": "one", "status": "planned"}, {"id": "t53", "title": "What Could Happen to the Multiverse?", "format": "one", "status": "planned"}, {"id": "t54", "title": "Will Doom Reveal His Face in Doomsday?", "format": "one", "status": "planned"}, {"id": "t55", "title": "Secret Wars – Comic-Book Storyline Explained", "format": "both", "status": "planned"}, {"id": "t56", "title": "Top 10 Doomsday Predictions", "format": "both", "status": "planned"}, {"id": "t57", "title": "Things Marvel Fans Expect from Doomsday", "format": "both", "status": "planned"}, {"id": "t58", "title": "Ultimate Doomsday Quiz", "format": "one", "status": "planned"}, {"id": "t59", "title": "Marvel Character Guessing Game", "format": "one", "status": "planned"}, {"id": "t60", "title": "Road to Doomsday Giveaway", "format": "one", "status": "planned"}, {"id": "t61", "title": "Everything to Remember Before Watching Avengers: Doomsday", "format": "both", "status": "planned"}]}]};
   async function load() {
-    if (SERVER) {
+    if (GH) {
+      try {
+        const data = await ghLoad();
+        if (data && Array.isArray(data.phases)) { state = data; setSync("Editing · saves to GitHub"); render(); return; }
+      } catch (e) {
+        setSync(e.message === "auth" ? "GitHub key rejected or expired. Tap Lock, then Edit to add a new key." : "Couldn't reach GitHub. Showing the last published copy.", true);
+      }
+    }
+    if (HTTP) {
       try {
         const r = await fetch("plan.json", { cache: "no-store" });
         if (r.ok) {
@@ -626,7 +698,8 @@ span.day-text { overflow-wrap: anywhere; }
           if (data && Array.isArray(data.phases)) {
             state = data;
             const when = data.updatedAt ? new Date(data.updatedAt).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }) : "";
-            setSync(canWrite ? "Loaded from docs/doomsday-plan.json" : "View-only" + (when ? " · updated " + when : ""));
+            if (GH) { render(); return; }   // GitHub load failed: keep its error message, show the published copy
+            setSync(canWrite ? "Loaded · saves to GitHub" + (when ? " · updated " + when : "") : "View-only" + (when ? " · updated " + when : ""));
             render(); return;
           }
         }
@@ -635,7 +708,7 @@ span.day-text { overflow-wrap: anywhere; }
     let saved = null;
     try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
     state = saved && Array.isArray(saved.phases) ? saved : clone(SEED);
-    setSync(SERVER ? "No plan file yet. Your first edit creates it." : saved ? "Saved in this browser only (run npm run plan to save to file)" : "Original list (not edited yet)");
+    setSync(HTTP ? "No plan file yet. Your first edit creates it." : saved ? "Saved in this browser only (run npm run plan to save to file)" : "Original list (not edited yet)");
     render();
   }
   $("#export").addEventListener("click", () => {
@@ -657,6 +730,29 @@ span.day-text { overflow-wrap: anywhere; }
     } catch (err) { setSync("That file isn't a plan backup.", true); }
   });
   $("#reset").addEventListener("click", () => withUndo("Reset to the original list", () => { state = clone(SEED); }));
+  // ---- unlock editing on this device ----
+  const unlockForm = $("#unlock-form"), unlockMsg = $("#unlock-msg");
+  $("#unlock").hidden = canWrite;
+  $("#lock").hidden = !GH;
+  $("#unlock").addEventListener("click", () => { unlockForm.hidden = false; $("#gh-token").focus(); });
+  $("#unlock-cancel").addEventListener("click", () => { unlockForm.hidden = true; });
+  $("#lock").addEventListener("click", () => { try { localStorage.removeItem("rtd-gh-token"); } catch (e) {} location.reload(); });
+  unlockForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const t = $("#gh-token").value.trim(); if (!t) return;
+    unlockMsg.className = "unlock-msg"; unlockMsg.textContent = "Checking…";
+    try {
+      const r = await fetch("https://api.github.com/repos/nishadshanid/dd", { headers: { Authorization: "Bearer " + t, Accept: "application/vnd.github+json" }, cache: "no-store" });
+      const j = r.ok ? await r.json() : null;
+      if (!j || !j.permissions || !j.permissions.push) throw new Error();
+      try { localStorage.setItem("rtd-gh-token", t); } catch (err) { throw new Error("storage"); }
+      location.reload();
+    } catch (err) {
+      unlockMsg.className = "unlock-msg err";
+      unlockMsg.textContent = err.message === "storage" ? "This browser blocked saving the key (private mode?)." : "That key can't edit nishadshanid/dd. It needs Contents: Read and write on that repo.";
+    }
+  });
+
   load();
 })();
 </script>
