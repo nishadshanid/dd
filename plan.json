@@ -1,0 +1,1736 @@
+{
+  "phases": [
+    {
+      "id": "p1",
+      "title": "X-Men Universe",
+      "items": [
+        {
+          "id": "t1",
+          "title": "X-Men (2000) – Full Movie Recap",
+          "format": "both",
+          "status": "done"
+        },
+        {
+          "id": "t2",
+          "title": "Wolverine – Complete Character Journey",
+          "format": "both",
+          "status": "done"
+        },
+        {
+          "id": "t4",
+          "title": "X2: X-Men United – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-19",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "djlpzp2y",
+          "title": "Jean Grey Both in MCU and X-Men  – Character Journeys",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-19",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t5",
+          "title": "Mystique, Cyclops, Nightcrawler – Character Journey",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-20",
+          "times": {
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t3",
+          "title": "Professor X, Magneto – Character Journeys",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-20",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t6",
+          "title": "X-Men – Character Identification Quiz",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-11-20",
+          "times": {
+            "one": "21:30"
+          }
+        },
+        {
+          "id": "t7",
+          "title": "X-Men – Fan Theories & Doomsday Connections",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-21",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Captain America & Original Avengers",
+      "items": [
+        {
+          "id": "t8",
+          "title": "Captain America: The First Avenger – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-22",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t9",
+          "title": "Steve Rogers – Complete Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-23",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t10",
+          "title": "Bucky Barnes – Complete Character Journey",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-23",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t11",
+          "title": "The Avengers (2012) – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-24",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t12",
+          "title": "Loki – Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-25",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t13",
+          "title": "Original Avengers – Quiz",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-11-25",
+          "times": {
+            "one": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Ant-Man, Wasp & Hulk",
+      "items": [
+        {
+          "id": "t14",
+          "title": "Ant-Man – Complete Character Journey",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-25",
+          "times": {
+            "short": "21:30"
+          }
+        },
+        {
+          "id": "t15",
+          "title": "Hulk – Complete MCU Character Journey",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-26",
+          "times": {
+            "short": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Infinity Saga",
+      "items": [
+        {
+          "id": "t16",
+          "title": "Avengers: Infinity War – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-26",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t17",
+          "title": "Thor – Complete Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-27",
+          "times": {
+            "short": "11:00",
+            "long": "13:00"
+          }
+        },
+        {
+          "id": "t18",
+          "title": "Avengers: Endgame – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-27",
+          "times": {
+            "short": "17:00",
+            "long": "19:00"
+          }
+        },
+        {
+          "id": "t19",
+          "title": "Infinity Saga – Ultimate Quiz",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-11-28",
+          "times": {
+            "one": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "title": "Loki & The Multiverse",
+      "items": [
+        {
+          "id": "t20",
+          "title": "Loki Season 1 – Full Series Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-28",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t21",
+          "title": "Loki Season 2 – Full Series Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-29",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t22",
+          "title": "Loki – From God of Mischief to God of Stories",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-11-30",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t23",
+          "title": "TVA – Important Characters & Storyline",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-30",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t24",
+          "title": "What Does Loki's Ending Mean for the Multiverse?",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-11-30",
+          "times": {
+            "short": "21:30"
+          }
+        },
+        {
+          "id": "t25",
+          "title": "Loki – Fan Theories & Predictions",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-01",
+          "times": {
+            "short": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "title": "Shang-Chi & Spider-Man",
+      "items": [
+        {
+          "id": "t26",
+          "title": "Shang-Chi and the Legend of the Ten Rings – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-01",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t27",
+          "title": "Shang-Chi – Complete Character Journey",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-02",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t28",
+          "title": "Spider-Man: No Way Home – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-02",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t29",
+          "title": "Peter Parker – Complete Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-03",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t30",
+          "title": "Spider-Man – Multiverse Quiz",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-03",
+          "times": {
+            "one": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "title": "Captain Marvel & Cosmic Heroes",
+      "items": [
+        {
+          "id": "t31",
+          "title": "Captain Marvel, Monica Rambeau & Ms. Marvel – Complete Character Journeys",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-03",
+          "times": {
+            "short": "21:30"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "title": "Wakanda & New Captain America",
+      "items": [
+        {
+          "id": "t32",
+          "title": "Black Panther: Wakanda Forever – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-04",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t33",
+          "title": "Shuri & Namor – Complete Character Journeys",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-04",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t34",
+          "title": "Captain America: Brave New World – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-05",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t35",
+          "title": "Sam Wilson – From Falcon to Captain America",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-05",
+          "times": {
+            "short": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "title": "Deadpool & X-Men Return",
+      "items": [
+        {
+          "id": "t36",
+          "title": "Deadpool & Wolverine – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-06",
+          "times": {
+            "short": "17:00",
+            "long": "19:00"
+          }
+        },
+        {
+          "id": "t37",
+          "title": "Deadpool – Complete Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-06",
+          "times": {
+            "short": "11:00",
+            "long": "13:00"
+          }
+        },
+        {
+          "id": "t38",
+          "title": "Gambit – Character History & Comic-Book Background",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-07",
+          "times": {
+            "short": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "title": "Doctor Strange & Scarlet Witch",
+      "items": [
+        {
+          "id": "t39",
+          "title": "Doctor Strange in the Multiverse of Madness – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-07",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t40",
+          "title": "Doctor Strange – Complete Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-08",
+          "times": {
+            "short": "11:00",
+            "long": "13:00"
+          }
+        },
+        {
+          "id": "t41",
+          "title": "Wanda Maximoff – Complete Character Journey",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-08",
+          "times": {
+            "short": "17:00",
+            "long": "19:00"
+          }
+        },
+        {
+          "id": "t42",
+          "title": "Scarlet Witch – Return Theories & Predictions",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-09",
+          "times": {
+            "short": "20:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "title": "Thunderbolts & New Avengers",
+      "items": [
+        {
+          "id": "t43",
+          "title": "Thunderbolts* – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-09",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t44",
+          "title": "Yelena Belova, Red Guardian – Character Journeys",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-10",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "vve3jve5",
+          "title": "Sentry, Ghost & U.S. Agent – Character Journeys",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-10",
+          "times": {
+            "short": "21:30"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "title": "Fantastic Four & Doctor Doom",
+      "items": [
+        {
+          "id": "t46",
+          "title": "The Fantastic Four: First Steps – Full Movie Recap",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-10",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t47",
+          "title": "Doctor Doom – Complete Comic-Book Origin",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-11",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t48",
+          "title": "Doctor Doom – Powers, Intelligence & Technology",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-11",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t49",
+          "title": "Reed Richards vs Doctor Doom – Their Rivalry",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-11",
+          "times": {
+            "short": "21:30"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p13",
+      "title": "The Final Doomsday Countdown",
+      "items": [
+        {
+          "id": "t50",
+          "title": "Why Is Doctor Doom Such a Dangerous Villain?",
+          "format": "short",
+          "status": "planned",
+          "date": "2026-12-12",
+          "times": {
+            "short": "20:00"
+          }
+        },
+        {
+          "id": "t51",
+          "title": "All Confirmed Doomsday Characters – Complete Breakdown",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-12",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t52",
+          "title": "Which Characters Could Form Alliances?",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-12",
+          "times": {
+            "one": "21:30"
+          }
+        },
+        {
+          "id": "t53",
+          "title": "What Could Happen to the Multiverse?",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-13",
+          "times": {
+            "one": "20:00"
+          }
+        },
+        {
+          "id": "t54",
+          "title": "Will Doom Reveal His Face in Doomsday?",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-13",
+          "times": {
+            "one": "21:30"
+          }
+        },
+        {
+          "id": "t55",
+          "title": "Secret Wars – Comic-Book Storyline Explained",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-13",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        },
+        {
+          "id": "t56",
+          "title": "Top 10 Doomsday Predictions",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-14",
+          "times": {
+            "short": "11:00",
+            "long": "13:00"
+          }
+        },
+        {
+          "id": "t57",
+          "title": "Things Marvel Fans Expect from Doomsday",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-14",
+          "times": {
+            "short": "17:00",
+            "long": "19:00"
+          }
+        },
+        {
+          "id": "t58",
+          "title": "Ultimate Doomsday Quiz",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-15",
+          "times": {
+            "one": "13:00"
+          }
+        },
+        {
+          "id": "t59",
+          "title": "Marvel Character Guessing Game",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-15",
+          "times": {
+            "one": "20:00"
+          }
+        },
+        {
+          "id": "t60",
+          "title": "Road to Doomsday Giveaway",
+          "format": "one",
+          "status": "planned",
+          "date": "2026-12-15",
+          "times": {
+            "one": "21:30"
+          }
+        },
+        {
+          "id": "t61",
+          "title": "Everything to Remember Before Watching Avengers: Doomsday",
+          "format": "both",
+          "status": "planned",
+          "date": "2026-12-16",
+          "times": {
+            "long": "18:00",
+            "short": "13:00"
+          }
+        }
+      ]
+    }
+  ],
+  "days": {
+    "2026-11-19": {
+      "stories": [
+        {
+          "id": "2026-11-19-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on X2 & Jean Grey",
+          "done": false,
+          "notes": "Q1. In X2, who leads the attack on Xavier's school?\nA) Magneto\nB) William Stryker\nC) Mystique\nD) Sabretooth\n✅ Answer: B) William Stryker\n\nQ2. Which mutant attacks the US President at the start of X2?\nA) Storm\nB) Nightcrawler\nC) Rogue\nD) Iceman\n✅ Answer: B) Nightcrawler\n\nQ3. What does Stryker want to use to kill all mutants?\nA) A cure serum\nB) Adamantium bullets\nC) A copy of Cerebro\nD) The Sentinels\n✅ Answer: C) A copy of Cerebro\n\nQ4. What is Jean Grey's cosmic alter ego called?\nA) White Queen\nB) Black Queen\nC) Psylocke\nD) Phoenix\n✅ Answer: D) Phoenix\n\nQ5. Who played the young Jean Grey in X-Men: Apocalypse?\nA) Anna Paquin\nB) Famke Janssen\nC) Halle Berry\nD) Sophie Turner\n✅ Answer: D) Sophie Turner",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-19-count",
+          "kind": "Countdown",
+          "title": "Countdown: 28 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-19-poll",
+          "kind": "Poll",
+          "title": "Poll: Best movie of the original X-Men trilogy?",
+          "done": false,
+          "notes": "Best movie of the original X-Men trilogy?\n• X-Men (2000)\n• X2 (2003)\n• The Last Stand (2006)",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-19-share",
+          "kind": "Share",
+          "title": "Share today's upload: X2: X-Men United",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-20": {
+      "stories": [
+        {
+          "id": "2026-11-20-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Mystique, Cyclops, Nightcrawler, Professor X & Magneto",
+          "done": false,
+          "notes": "Q1. Who played Mystique in X-Men (2000)?\nA) Halle Berry\nB) Jennifer Lawrence\nC) Rebecca Romijn\nD) Famke Janssen\n✅ Answer: C) Rebecca Romijn\n\nQ2. What controls Cyclops's eye beams?\nA) Telepathy\nB) Ruby-quartz glasses\nC) Gloves\nD) A metal helmet\n✅ Answer: B) Ruby-quartz glasses\n\nQ3. What is Nightcrawler's power?\nA) Invisibility\nB) Mind reading\nC) Super speed\nD) Teleportation\n✅ Answer: D) Teleportation\n\nQ4. What is Magneto's real name?\nA) Erik Lehnsherr\nB) Logan Howlett\nC) Charles Xavier\nD) Scott Summers\n✅ Answer: A) Erik Lehnsherr\n\nQ5. What machine does Professor X use to find mutants?\nA) The Danger Room\nB) Sentinel\nC) Blackbird\nD) Cerebro\n✅ Answer: D) Cerebro",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-20-count",
+          "kind": "Countdown",
+          "title": "Countdown: 27 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-20-poll",
+          "kind": "Poll",
+          "title": "Poll: Which X-Men power would you pick?",
+          "done": false,
+          "notes": "Which X-Men power would you pick?\n• Teleport (Nightcrawler)\n• Shape-shift (Mystique)\n• Read minds (Professor X)\n• Control metal (Magneto)",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-20-share",
+          "kind": "Share",
+          "title": "Share today's upload: Mystique, Cyclops, Nightcrawler",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-21": {
+      "stories": [
+        {
+          "id": "2026-11-21-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on X-Men & Doomsday",
+          "done": false,
+          "notes": "Q1. Who returns as Professor X in Avengers: Doomsday?\nA) Ian McKellen\nB) James McAvoy\nC) Hugh Jackman\nD) Patrick Stewart\n✅ Answer: D) Patrick Stewart\n\nQ2. Which Fox X-Men actor returns as Cyclops in Doomsday?\nA) Shawn Ashmore\nB) Tye Sheridan\nC) Ben Foster\nD) James Marsden\n✅ Answer: D) James Marsden\n\nQ3. In which MCU film did Patrick Stewart's Professor X first appear?\nA) Doctor Strange in the Multiverse of Madness\nB) Spider-Man: No Way Home\nC) Avengers: Endgame\nD) The Marvels\n✅ Answer: A) Doctor Strange in the Multiverse of Madness\n\nQ4. Kelsey Grammer's Beast showed up in which MCU film's end scene?\nA) Deadpool & Wolverine\nB) Eternals\nC) The Marvels\nD) Ant-Man and the Wasp: Quantumania\n✅ Answer: C) The Marvels\n\nQ5. In the comics, what gives mutants their powers?\nA) The X-Gene\nB) Terrigen Mist\nC) Super Soldier Serum\nD) Gamma radiation\n✅ Answer: A) The X-Gene",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-21-count",
+          "kind": "Countdown",
+          "title": "Countdown: 26 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-21-poll",
+          "kind": "Poll",
+          "title": "Poll: Who was right about humans?",
+          "done": false,
+          "notes": "Who was right about humans?\n• Professor X\n• Magneto",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-21-share",
+          "kind": "Share",
+          "title": "Share today's upload: X-Men",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-22": {
+      "stories": [
+        {
+          "id": "2026-11-22-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Captain America: The First Avenger",
+          "done": false,
+          "notes": "Q1. Who created the Super Soldier Serum used on Steve?\nA) Dr. Abraham Erskine\nB) Howard Stark\nC) Bruce Banner\nD) Arnim Zola\n✅ Answer: A) Dr. Abraham Erskine\n\nQ2. Who is the Hydra leader in The First Avenger?\nA) Crossbones\nB) Ultron\nC) Red Skull\nD) Baron Zemo\n✅ Answer: C) Red Skull\n\nQ3. Which cosmic object does Red Skull use?\nA) The Aether\nB) The Tesseract\nC) The Orb\nD) The Scepter\n✅ Answer: B) The Tesseract\n\nQ4. What metal is Captain America's shield made of?\nA) Uru\nB) Titanium\nC) Vibranium\nD) Adamantium\n✅ Answer: C) Vibranium\n\nQ5. Where does Steve crash Red Skull's plane?\nA) The Alps\nB) The Atlantic Ocean\nC) New York\nD) The Arctic ice\n✅ Answer: D) The Arctic ice",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-22-count",
+          "kind": "Countdown",
+          "title": "Countdown: 25 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-22-poll",
+          "kind": "Poll",
+          "title": "Poll: Best Captain America movie?",
+          "done": false,
+          "notes": "Best Captain America movie?\n• The First Avenger\n• The Winter Soldier\n• Civil War\n• Brave New World",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-22-share",
+          "kind": "Share",
+          "title": "Share today's upload: Captain America: The First Avenger",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-23": {
+      "stories": [
+        {
+          "id": "2026-11-23-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Steve Rogers & Bucky Barnes",
+          "done": false,
+          "notes": "Q1. Which New York borough are Steve and Bucky from?\nA) Manhattan\nB) Queens\nC) The Bronx\nD) Brooklyn\n✅ Answer: D) Brooklyn\n\nQ2. Who does Steve give his shield to at the end of Endgame?\nA) Peggy Carter\nB) John Walker\nC) Sam Wilson\nD) Bucky Barnes\n✅ Answer: C) Sam Wilson\n\nQ3. What was Bucky called after Hydra brainwashed him?\nA) The White Wolf\nB) The Red Guardian\nC) The Winter Soldier\nD) Crossbones\n✅ Answer: C) The Winter Soldier\n\nQ4. Which of Bucky's arms is metal?\nA) Both\nB) Right\nC) Neither\nD) Left\n✅ Answer: D) Left\n\nQ5. Who gave Bucky his new vibranium arm?\nA) Zemo\nB) Shuri\nC) Howard Stark\nD) Tony Stark\n✅ Answer: B) Shuri",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-23-count",
+          "kind": "Countdown",
+          "title": "Countdown: 24 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-23-poll",
+          "kind": "Poll",
+          "title": "Poll: Steve going back to Peggy in Endgame was…",
+          "done": false,
+          "notes": "Steve going back to Peggy in Endgame was…\n• The perfect ending\n• He should have stayed",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-23-share",
+          "kind": "Share",
+          "title": "Share today's upload: Steve Rogers",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-24": {
+      "stories": [
+        {
+          "id": "2026-11-24-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on The Avengers (2012)",
+          "done": false,
+          "notes": "Q1. Who directed The Avengers (2012)?\nA) Jon Favreau\nB) The Russo brothers\nC) Joss Whedon\nD) James Gunn\n✅ Answer: C) Joss Whedon\n\nQ2. In which city is the final battle?\nA) Washington D.C.\nB) London\nC) Sokovia\nD) New York\n✅ Answer: D) New York\n\nQ3. What is the alien army Loki brings called?\nA) The Chitauri\nB) The Kree\nC) The Skrulls\nD) The Outriders\n✅ Answer: A) The Chitauri\n\nQ4. Which S.H.I.E.L.D. agent does Loki stab?\nA) Phil Coulson\nB) Maria Hill\nC) Nick Fury\nD) Clint Barton\n✅ Answer: A) Phil Coulson\n\nQ5. What does Hulk call Loki after smashing him?\nA) Little brother\nB) Weak god\nC) Puny god\nD) Tiny king\n✅ Answer: C) Puny god",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-24-count",
+          "kind": "Countdown",
+          "title": "Countdown: 23 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-24-poll",
+          "kind": "Poll",
+          "title": "Poll: Best moment of The Avengers (2012)?",
+          "done": false,
+          "notes": "Best moment of The Avengers (2012)?\n• The circle shot\n• Hulk smashes Loki\n• \"I'm always angry\"\n• The shawarma scene",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-24-share",
+          "kind": "Share",
+          "title": "Share today's upload: The Avengers (2012)",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-25": {
+      "stories": [
+        {
+          "id": "2026-11-25-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Loki, the Original Avengers & Ant-Man",
+          "done": false,
+          "notes": "Q1. Who is Loki's biological father?\nA) Bor\nB) Surtur\nC) Laufey\nD) Odin\n✅ Answer: C) Laufey\n\nQ2. How many heroes were in the original Avengers team (2012)?\nA) 4\nB) 5\nC) 7\nD) 6\n✅ Answer: D) 6\n\nQ3. Who created the Pym Particles?\nA) Darren Cross\nB) Hank Pym\nC) Tony Stark\nD) Scott Lang\n✅ Answer: B) Hank Pym\n\nQ4. What is Scott Lang's daughter's name?\nA) Kate\nB) Janet\nC) Hope\nD) Cassie\n✅ Answer: D) Cassie\n\nQ5. What is Loki's famous title?\nA) God of Death\nB) God of War\nC) God of Mischief\nD) God of Thunder\n✅ Answer: C) God of Mischief",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-25-count",
+          "kind": "Countdown",
+          "title": "Countdown: 22 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-25-poll",
+          "kind": "Poll",
+          "title": "Poll: Loki is a…",
+          "done": false,
+          "notes": "Loki is a…\n• Hero\n• Villain\n• A bit of both",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-25-share",
+          "kind": "Share",
+          "title": "Share today's upload: Loki",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-26": {
+      "stories": [
+        {
+          "id": "2026-11-26-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Hulk & Infinity War",
+          "done": false,
+          "notes": "Q1. Who played Bruce Banner in The Incredible Hulk (2008)?\nA) Lou Ferrigno\nB) Eric Bana\nC) Mark Ruffalo\nD) Edward Norton\n✅ Answer: D) Edward Norton\n\nQ2. How many Infinity Stones does Thanos collect?\nA) 6\nB) 4\nC) 7\nD) 5\n✅ Answer: A) 6\n\nQ3. On which planet is the Soul Stone hidden?\nA) Titan\nB) Xandar\nC) Nidavellir\nD) Vormir\n✅ Answer: D) Vormir\n\nQ4. Who does Thanos sacrifice for the Soul Stone?\nA) Nebula\nB) Mantis\nC) Gamora\nD) Natasha\n✅ Answer: C) Gamora\n\nQ5. Where is the final battle of Infinity War?\nA) Wakanda\nB) Asgard\nC) Titan\nD) New York\n✅ Answer: A) Wakanda",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-26-count",
+          "kind": "Countdown",
+          "title": "Countdown: 21 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-26-poll",
+          "kind": "Poll",
+          "title": "Poll: Was Thanos right?",
+          "done": false,
+          "notes": "Was Thanos right?\n• Yes\n• No",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-26-share",
+          "kind": "Share",
+          "title": "Share today's upload: Hulk",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-27": {
+      "stories": [
+        {
+          "id": "2026-11-27-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Thor & Endgame",
+          "done": false,
+          "notes": "Q1. What is Thor's hammer called?\nA) Jarnbjorn\nB) Gungnir\nC) Mjolnir\nD) Stormbreaker\n✅ Answer: C) Mjolnir\n\nQ2. Which new weapon does Thor forge in Infinity War?\nA) Stormbreaker\nB) Hofund\nC) The Twilight Sword\nD) Mjolnir\n✅ Answer: A) Stormbreaker\n\nQ3. Who lifts Mjolnir in the final battle of Endgame?\nA) Hulk\nB) Vision\nC) Captain Marvel\nD) Captain America\n✅ Answer: D) Captain America\n\nQ4. Who gives her life for the Soul Stone in Endgame?\nA) Natasha Romanoff\nB) Gamora\nC) Nebula\nD) Wanda Maximoff\n✅ Answer: A) Natasha Romanoff\n\nQ5. What are Tony Stark's last words before the snap?\nA) I love you 3000\nB) I am Iron Man\nC) Avengers assemble\nD) We're in the endgame now\n✅ Answer: B) I am Iron Man",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-27-count",
+          "kind": "Countdown",
+          "title": "Countdown: 20 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-27-poll",
+          "kind": "Poll",
+          "title": "Poll: Saddest moment in Endgame?",
+          "done": false,
+          "notes": "Saddest moment in Endgame?\n• Tony's sacrifice\n• Natasha on Vormir\n• Old Steve's goodbye",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-27-share",
+          "kind": "Share",
+          "title": "Share today's upload: Thor",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-28": {
+      "stories": [
+        {
+          "id": "2026-11-28-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Infinity Saga & Loki Season 1",
+          "done": false,
+          "notes": "Q1. What was the first MCU movie?\nA) Captain America: The First Avenger\nB) The Incredible Hulk\nC) Iron Man (2008)\nD) Thor\n✅ Answer: C) Iron Man (2008)\n\nQ2. Which Infinity Stone was inside Loki's scepter?\nA) Power Stone\nB) Space Stone\nC) Mind Stone\nD) Soul Stone\n✅ Answer: C) Mind Stone\n\nQ3. Which organisation arrests Loki in Season 1?\nA) S.H.I.E.L.D.\nB) Hydra\nC) The TVA\nD) S.W.O.R.D.\n✅ Answer: C) The TVA\n\nQ4. What is the name of the female Loki variant?\nA) Lady Sif\nB) Hela\nC) Sylvie\nD) Ravonna\n✅ Answer: C) Sylvie\n\nQ5. What is the TVA's cartoon clock mascot called?\nA) Mister Clock\nB) Time Keeper\nC) Tick Tock\nD) Miss Minutes\n✅ Answer: D) Miss Minutes",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-28-count",
+          "kind": "Countdown",
+          "title": "Countdown: 19 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-28-poll",
+          "kind": "Poll",
+          "title": "Poll: Which Infinity Stone would you take?",
+          "done": false,
+          "notes": "Which Infinity Stone would you take?\n• Time\n• Mind\n• Reality\n• Power",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-28-share",
+          "kind": "Share",
+          "title": "Share today's upload: Infinity Saga",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-29": {
+      "stories": [
+        {
+          "id": "2026-11-29-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Loki Season 2",
+          "done": false,
+          "notes": "Q1. Who plays Ouroboros (O.B.) in Season 2?\nA) Owen Wilson\nB) Ke Huy Quan\nC) Richard E. Grant\nD) Jonathan Majors\n✅ Answer: B) Ke Huy Quan\n\nQ2. Who played He Who Remains?\nA) Tom Hiddleston\nB) Ke Huy Quan\nC) Owen Wilson\nD) Jonathan Majors\n✅ Answer: D) Jonathan Majors\n\nQ3. Which TVA machine is breaking down in Season 2?\nA) The Time Stone\nB) The Quantum Tunnel\nC) The Temporal Loom\nD) The Reset Charge\n✅ Answer: C) The Temporal Loom\n\nQ4. What new power does Loki learn in Season 2?\nA) Super strength\nB) Flight\nC) Mind control\nD) Time-slipping\n✅ Answer: D) Time-slipping\n\nQ5. What shape do the timelines form around Loki at the end?\nA) A circle\nB) A tree\nC) A star\nD) A spiral\n✅ Answer: B) A tree",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-29-count",
+          "kind": "Countdown",
+          "title": "Countdown: 18 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-29-poll",
+          "kind": "Poll",
+          "title": "Poll: Loki's ending in Season 2 was…",
+          "done": false,
+          "notes": "Loki's ending in Season 2 was…\n• Perfect\n• Heartbreaking\n• Both",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-29-share",
+          "kind": "Share",
+          "title": "Share today's upload: Loki Season 2",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-11-30": {
+      "stories": [
+        {
+          "id": "2026-11-30-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Loki, God of Stories & the TVA",
+          "done": false,
+          "notes": "Q1. What title does Loki take at the end of Season 2?\nA) God of Stories\nB) King of Asgard\nC) God of Mischief\nD) God of Time\n✅ Answer: A) God of Stories\n\nQ2. What does TVA stand for?\nA) Time Variance Authority\nB) Time Value Association\nC) Time Vault Agency\nD) Temporal Variant Army\n✅ Answer: A) Time Variance Authority\n\nQ3. Who plays Mobius in Loki?\nA) Owen Wilson\nB) Tom Hiddleston\nC) Ke Huy Quan\nD) Richard E. Grant\n✅ Answer: A) Owen Wilson\n\nQ4. Who is the TVA judge in Season 1?\nA) Sylvie\nB) Hunter B-15\nC) Ravonna Renslayer\nD) Miss Minutes\n✅ Answer: C) Ravonna Renslayer\n\nQ5. What does the TVA use to wipe out branch timelines?\nA) Infinity Stones\nB) The Darkhold\nC) Reset charges\nD) Pym Particles\n✅ Answer: C) Reset charges",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-11-30-count",
+          "kind": "Countdown",
+          "title": "Countdown: 17 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-11-30-poll",
+          "kind": "Poll",
+          "title": "Poll: Should Loki come back in Doomsday?",
+          "done": false,
+          "notes": "Should Loki come back in Doomsday?\n• Yes, we need him\n• Let him rest",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-11-30-share",
+          "kind": "Share",
+          "title": "Share today's upload: Loki",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-01": {
+      "stories": [
+        {
+          "id": "2026-12-01-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Loki theories & Shang-Chi",
+          "done": false,
+          "notes": "Q1. Which Loki actor is confirmed for Avengers: Doomsday?\nA) Tom Hiddleston\nB) Owen Wilson\nC) Sophia Di Martino\nD) Richard E. Grant\n✅ Answer: A) Tom Hiddleston\n\nQ2. Who is Shang-Chi's father?\nA) Razor Fist\nB) Death Dealer\nC) Wenwu\nD) Morris\n✅ Answer: C) Wenwu\n\nQ3. What weapon gives Wenwu his power?\nA) The Darkhold\nB) The Infinity Gauntlet\nC) A vibranium staff\nD) The Ten Rings\n✅ Answer: D) The Ten Rings\n\nQ4. What is the hidden village of Shang-Chi's mother called?\nA) Talokan\nB) Kamar-Taj\nC) Ta Lo\nD) K'un-Lun\n✅ Answer: C) Ta Lo\n\nQ5. What is the dragon in Shang-Chi called?\nA) The Great Protector\nB) Dweller-in-Darkness\nC) Fin Fang Foom\nD) Morris\n✅ Answer: A) The Great Protector",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-01-count",
+          "kind": "Countdown",
+          "title": "Countdown: 16 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-01-poll",
+          "kind": "Poll",
+          "title": "Poll: Have you watched Shang-Chi?",
+          "done": false,
+          "notes": "Have you watched Shang-Chi?\n• Yes, loved it\n• Yes, it was okay\n• Not yet",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-01-share",
+          "kind": "Share",
+          "title": "Share today's upload: Loki",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-02": {
+      "stories": [
+        {
+          "id": "2026-12-02-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Shang-Chi & No Way Home",
+          "done": false,
+          "notes": "Q1. What job does Shang-Chi have in San Francisco?\nA) Taxi driver\nB) Chef\nC) Hotel valet\nD) Martial arts teacher\n✅ Answer: C) Hotel valet\n\nQ2. Who casts the spell that breaks the multiverse in No Way Home?\nA) Wong\nB) Loki\nC) Doctor Strange\nD) Wanda\n✅ Answer: C) Doctor Strange\n\nQ3. Which villain is NOT in No Way Home?\nA) Vulture\nB) Green Goblin\nC) Doc Ock\nD) Electro\n✅ Answer: A) Vulture\n\nQ4. Which two Spider-Man actors return in No Way Home?\nA) Tobey Maguire & Jake Gyllenhaal\nB) Andrew Garfield & Shameik Moore\nC) Nicholas Hammond & Tobey Maguire\nD) Tobey Maguire & Andrew Garfield\n✅ Answer: D) Tobey Maguire & Andrew Garfield\n\nQ5. Who dies in No Way Home?\nA) Aunt May\nB) Happy Hogan\nC) MJ\nD) Ned Leeds\n✅ Answer: A) Aunt May",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-02-count",
+          "kind": "Countdown",
+          "title": "Countdown: 15 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-02-poll",
+          "kind": "Poll",
+          "title": "Poll: Best Spider-Man?",
+          "done": false,
+          "notes": "Best Spider-Man?\n• Tobey\n• Andrew\n• Tom",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-02-share",
+          "kind": "Share",
+          "title": "Share today's upload: Shang-Chi",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-03": {
+      "stories": [
+        {
+          "id": "2026-12-03-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Peter Parker, Captain Marvel & Ms. Marvel",
+          "done": false,
+          "notes": "Q1. Who is Peter Parker's best friend in the MCU?\nA) Ned Leeds\nB) Miles Morales\nC) Flash Thompson\nD) Harry Osborn\n✅ Answer: A) Ned Leeds\n\nQ2. Who gives Peter the Iron Spider suit?\nA) Doctor Strange\nB) Happy Hogan\nC) Tony Stark\nD) Nick Fury\n✅ Answer: C) Tony Stark\n\nQ3. Where did Carol Danvers get her powers?\nA) Gamma radiation\nB) The Mind Stone\nC) Tesseract (Space Stone) energy\nD) Pym Particles\n✅ Answer: C) Tesseract (Space Stone) energy\n\nQ4. What is Ms. Marvel's real name?\nA) Riri Williams\nB) Kate Bishop\nC) Monica Rambeau\nD) Kamala Khan\n✅ Answer: D) Kamala Khan\n\nQ5. Which film brings Carol, Monica and Kamala together?\nA) Avengers: Endgame\nB) Secret Invasion\nC) The Marvels\nD) Captain Marvel\n✅ Answer: C) The Marvels",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-03-count",
+          "kind": "Countdown",
+          "title": "Countdown: 14 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-03-poll",
+          "kind": "Poll",
+          "title": "Poll: Strongest of the Marvels?",
+          "done": false,
+          "notes": "Strongest of the Marvels?\n• Captain Marvel\n• Monica Rambeau\n• Ms. Marvel",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-03-share",
+          "kind": "Share",
+          "title": "Share today's upload: Peter Parker",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-04": {
+      "stories": [
+        {
+          "id": "2026-12-04-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Wakanda Forever, Shuri & Namor",
+          "done": false,
+          "notes": "Q1. What is Namor's underwater kingdom called?\nA) Talokan\nB) Wakanda\nC) Ta Lo\nD) Atlantis\n✅ Answer: A) Talokan\n\nQ2. Who becomes the new Black Panther?\nA) Okoye\nB) Shuri\nC) M'Baku\nD) Nakia\n✅ Answer: B) Shuri\n\nQ3. Who plays Namor?\nA) Michael B. Jordan\nB) Daniel Kaluuya\nC) Winston Duke\nD) Tenoch Huerta\n✅ Answer: D) Tenoch Huerta\n\nQ4. Which young genius builds a vibranium detector?\nA) Riri Williams\nB) Kamala Khan\nC) Cassie Lang\nD) Kate Bishop\n✅ Answer: A) Riri Williams\n\nQ5. Which metal do Wakanda and Talokan both have?\nA) Uru\nB) Gold\nC) Adamantium\nD) Vibranium\n✅ Answer: D) Vibranium",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-04-count",
+          "kind": "Countdown",
+          "title": "Countdown: 13 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-04-poll",
+          "kind": "Poll",
+          "title": "Poll: Shuri vs Namor: who wins?",
+          "done": false,
+          "notes": "Shuri vs Namor: who wins?\n• Shuri\n• Namor",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-04-share",
+          "kind": "Share",
+          "title": "Share today's upload: Black Panther: Wakanda Forever",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-05": {
+      "stories": [
+        {
+          "id": "2026-12-05-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Brave New World & Sam Wilson",
+          "done": false,
+          "notes": "Q1. Who plays President Thaddeus Ross in Brave New World?\nA) Tim Blake Nelson\nB) Harrison Ford\nC) William Hurt\nD) Samuel L. Jackson\n✅ Answer: B) Harrison Ford\n\nQ2. What does Ross turn into?\nA) Red Hulk\nB) Abomination\nC) The Leader\nD) She-Hulk\n✅ Answer: A) Red Hulk\n\nQ3. Which metal is found on Celestial Island?\nA) Uru\nB) Gold\nC) Vibranium\nD) Adamantium\n✅ Answer: D) Adamantium\n\nQ4. What was Sam Wilson's hero name before Captain America?\nA) War Machine\nB) Patriot\nC) U.S. Agent\nD) Falcon\n✅ Answer: D) Falcon\n\nQ5. Who becomes the new Falcon?\nA) John Walker\nB) Bucky Barnes\nC) Isaiah Bradley\nD) Joaquin Torres\n✅ Answer: D) Joaquin Torres",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-05-count",
+          "kind": "Countdown",
+          "title": "Countdown: 12 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-05-poll",
+          "kind": "Poll",
+          "title": "Poll: Is Sam Wilson a worthy Captain America?",
+          "done": false,
+          "notes": "Is Sam Wilson a worthy Captain America?\n• Yes, totally\n• Not yet",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-05-share",
+          "kind": "Share",
+          "title": "Share today's upload: Captain America: Brave New World",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-06": {
+      "stories": [
+        {
+          "id": "2026-12-06-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Deadpool & Wolverine",
+          "done": false,
+          "notes": "Q1. What is Deadpool's real name?\nA) Wade Wilson\nB) Nathan Summers\nC) Logan Howlett\nD) Remy LeBeau\n✅ Answer: A) Wade Wilson\n\nQ2. Who plays Deadpool?\nA) Channing Tatum\nB) Hugh Jackman\nC) Ryan Reynolds\nD) Chris Evans\n✅ Answer: C) Ryan Reynolds\n\nQ3. Who is the main villain of Deadpool & Wolverine?\nA) Cassandra Nova\nB) Sabretooth\nC) Mr. Paradox\nD) Ajax\n✅ Answer: A) Cassandra Nova\n\nQ4. Where are Deadpool and Wolverine dumped by the TVA?\nA) The Void\nB) Battleworld\nC) The Quantum Realm\nD) Limbo\n✅ Answer: A) The Void\n\nQ5. What power keeps Deadpool alive?\nA) Telepathy\nB) Teleportation\nC) Super speed\nD) A healing factor\n✅ Answer: D) A healing factor",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-06-count",
+          "kind": "Countdown",
+          "title": "Countdown: 11 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-06-poll",
+          "kind": "Poll",
+          "title": "Poll: Funniest Marvel hero?",
+          "done": false,
+          "notes": "Funniest Marvel hero?\n• Deadpool\n• Thor\n• Star-Lord\n• Spider-Man",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-06-share",
+          "kind": "Share",
+          "title": "Share today's upload: Deadpool & Wolverine",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-07": {
+      "stories": [
+        {
+          "id": "2026-12-07-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Gambit & Multiverse of Madness",
+          "done": false,
+          "notes": "Q1. What is Gambit's real name?\nA) Wade Wilson\nB) Remy LeBeau\nC) Bobby Drake\nD) Kurt Wagner\n✅ Answer: B) Remy LeBeau\n\nQ2. Who plays Gambit in Deadpool & Wolverine?\nA) Chris Evans\nB) Ryan Reynolds\nC) Taylor Kitsch\nD) Channing Tatum\n✅ Answer: D) Channing Tatum\n\nQ3. What does Gambit charge with kinetic energy?\nA) Knives\nB) Playing cards\nC) Arrows\nD) Coins\n✅ Answer: B) Playing cards\n\nQ4. What is America Chavez's power?\nA) Opening portals between universes\nB) Shape-shifting\nC) Mind control\nD) Time travel\n✅ Answer: A) Opening portals between universes\n\nQ5. Which dark book corrupts Wanda?\nA) The Book of Vishanti\nB) The Book of Cagliostro\nC) The Darkhold\nD) The Necronomicon\n✅ Answer: C) The Darkhold",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-07-count",
+          "kind": "Countdown",
+          "title": "Countdown: 10 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-07-poll",
+          "kind": "Poll",
+          "title": "Poll: Excited to see Channing Tatum's Gambit again?",
+          "done": false,
+          "notes": "Excited to see Channing Tatum's Gambit again?\n• Yes!\n• Not really",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-07-share",
+          "kind": "Share",
+          "title": "Share today's upload: Gambit",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-08": {
+      "stories": [
+        {
+          "id": "2026-12-08-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Doctor Strange & Wanda",
+          "done": false,
+          "notes": "Q1. What was Stephen Strange's job before magic?\nA) Lawyer\nB) Neurosurgeon\nC) Pilot\nD) Physicist\n✅ Answer: B) Neurosurgeon\n\nQ2. Where does Strange learn the mystic arts?\nA) Sanctum Sanctorum\nB) Kamar-Taj\nC) Wakanda\nD) Ta Lo\n✅ Answer: B) Kamar-Taj\n\nQ3. Who is Wanda's twin brother?\nA) Billy\nB) Vision\nC) Pietro\nD) Tommy\n✅ Answer: C) Pietro\n\nQ4. What is the name of Wanda's sitcom series?\nA) Westview\nB) WandaVision\nC) Agatha All Along\nD) Scarlet Witch\n✅ Answer: B) WandaVision\n\nQ5. What town does Wanda take over in WandaVision?\nA) Westview\nB) Riverdale\nC) Hawkins\nD) Sokovia\n✅ Answer: A) Westview",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-08-count",
+          "kind": "Countdown",
+          "title": "Countdown: 9 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-08-poll",
+          "kind": "Poll",
+          "title": "Poll: Who is more powerful?",
+          "done": false,
+          "notes": "Who is more powerful?\n• Doctor Strange\n• Scarlet Witch",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-08-share",
+          "kind": "Share",
+          "title": "Share today's upload: Doctor Strange",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-09": {
+      "stories": [
+        {
+          "id": "2026-12-09-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Scarlet Witch & Thunderbolts*",
+          "done": false,
+          "notes": "Q1. Where was Wanda last seen in Multiverse of Madness?\nA) Kamar-Taj\nB) Westview\nC) Sokovia\nD) Mount Wundagore\n✅ Answer: D) Mount Wundagore\n\nQ2. Who recruits the Thunderbolts* team?\nA) Nick Fury\nB) Maria Hill\nC) Valentina Allegra de Fontaine\nD) Thaddeus Ross\n✅ Answer: C) Valentina Allegra de Fontaine\n\nQ3. What does the * in Thunderbolts* turn out to mean?\nA) The Dark Avengers\nB) The Young Avengers\nC) The New Avengers\nD) The Secret Avengers\n✅ Answer: C) The New Avengers\n\nQ4. What dark side does Bob (Sentry) turn into?\nA) The Void\nB) The Abomination\nC) Knull\nD) Venom\n✅ Answer: A) The Void\n\nQ5. Who is Yelena Belova's adopted sister?\nA) Kate Bishop\nB) Wanda Maximoff\nC) Natasha Romanoff\nD) Melina Vostokoff\n✅ Answer: C) Natasha Romanoff",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-09-count",
+          "kind": "Countdown",
+          "title": "Countdown: 8 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-09-poll",
+          "kind": "Poll",
+          "title": "Poll: Should Wanda return?",
+          "done": false,
+          "notes": "Should Wanda return?\n• Yes\n• No",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-09-share",
+          "kind": "Share",
+          "title": "Share today's upload: Scarlet Witch",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-10": {
+      "stories": [
+        {
+          "id": "2026-12-10-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Thunderbolts* team & Fantastic Four",
+          "done": false,
+          "notes": "Q1. What is Red Guardian's real name?\nA) Bob Reynolds\nB) John Walker\nC) Alexei Shostakov\nD) Antonia Dreykov\n✅ Answer: C) Alexei Shostakov\n\nQ2. What is U.S. Agent's real name?\nA) Lemar Hoskins\nB) Bucky Barnes\nC) Joaquin Torres\nD) John Walker\n✅ Answer: D) John Walker\n\nQ3. What is Ghost's power?\nA) Teleportation\nB) Phasing through things\nC) Super strength\nD) Flying\n✅ Answer: B) Phasing through things\n\nQ4. Who plays Reed Richards in The Fantastic Four: First Steps?\nA) John Krasinski\nB) Pedro Pascal\nC) Ioan Gruffudd\nD) Miles Teller\n✅ Answer: B) Pedro Pascal\n\nQ5. Who is the giant villain in The Fantastic Four: First Steps?\nA) Annihilus\nB) Mole Man\nC) Galactus\nD) Doctor Doom\n✅ Answer: C) Galactus",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-10-count",
+          "kind": "Countdown",
+          "title": "Countdown: 7 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-10-poll",
+          "kind": "Poll",
+          "title": "Poll: Best new Thunderbolts* member?",
+          "done": false,
+          "notes": "Best new Thunderbolts* member?\n• Yelena\n• Red Guardian\n• Bob (Sentry)\n• U.S. Agent",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-10-share",
+          "kind": "Share",
+          "title": "Share today's upload: Yelena Belova, Red Guardian",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-11": {
+      "stories": [
+        {
+          "id": "2026-12-11-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Doctor Doom & Reed Richards",
+          "done": false,
+          "notes": "Q1. What is Doctor Doom's real name?\nA) Valeria von Doom\nB) Victor von Doom\nC) Kristoff Vernard\nD) Viktor Stark\n✅ Answer: B) Victor von Doom\n\nQ2. Which country does Doctor Doom rule?\nA) Madripoor\nB) Latveria\nC) Sokovia\nD) Genosha\n✅ Answer: B) Latveria\n\nQ3. Who plays Doctor Doom in Avengers: Doomsday?\nA) Pedro Pascal\nB) Toby Kebbell\nC) Robert Downey Jr.\nD) Cillian Murphy\n✅ Answer: C) Robert Downey Jr.\n\nQ4. Doom mixes super-science with what?\nA) Gamma radiation\nB) Sorcery\nC) Cosmic energy\nD) The Speed Force\n✅ Answer: B) Sorcery\n\nQ5. Who is Doom's biggest rival in the comics?\nA) Doctor Strange\nB) Namor\nC) Tony Stark\nD) Reed Richards\n✅ Answer: D) Reed Richards",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-11-count",
+          "kind": "Countdown",
+          "title": "Countdown: 6 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-11-poll",
+          "kind": "Poll",
+          "title": "Poll: Smartest mind in Marvel?",
+          "done": false,
+          "notes": "Smartest mind in Marvel?\n• Doctor Doom\n• Reed Richards\n• Tony Stark\n• Shuri",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-11-share",
+          "kind": "Share",
+          "title": "Share today's upload: Doctor Doom",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-12": {
+      "stories": [
+        {
+          "id": "2026-12-12-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Doom's danger & the Doomsday cast",
+          "done": false,
+          "notes": "Q1. In which 2015 comic does Doom become God Emperor?\nA) House of M\nB) Infinity\nC) Civil War\nD) Secret Wars\n✅ Answer: D) Secret Wars\n\nQ2. Who directs Avengers: Doomsday?\nA) Jon Watts\nB) Sam Raimi\nC) James Gunn\nD) The Russo brothers\n✅ Answer: D) The Russo brothers\n\nQ3. Which Avengers film comes after Doomsday?\nA) Avengers: The Kang Dynasty\nB) Avengers: Forever\nC) Avengers: Secret Wars\nD) Avengers: Infinity\n✅ Answer: C) Avengers: Secret Wars\n\nQ4. Who plays the Thing in the Fantastic Four?\nA) Ebon Moss-Bachrach\nB) Lewis Pullman\nC) Joseph Quinn\nD) Pedro Pascal\n✅ Answer: A) Ebon Moss-Bachrach\n\nQ5. Why does Doom wear his mask in the comics?\nA) To control robots\nB) To hide his identity\nC) To hide his scarred face\nD) To breathe in space\n✅ Answer: C) To hide his scarred face",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-12-count",
+          "kind": "Countdown",
+          "title": "Countdown: 5 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-12-poll",
+          "kind": "Poll",
+          "title": "Poll: Can the Avengers beat Doctor Doom?",
+          "done": false,
+          "notes": "Can the Avengers beat Doctor Doom?\n• Yes\n• No",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-12-share",
+          "kind": "Share",
+          "title": "Share today's upload: Why Is Doctor Doom Such a Dangerous Villain?",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-13": {
+      "stories": [
+        {
+          "id": "2026-12-13-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Secret Wars & the multiverse",
+          "done": false,
+          "notes": "Q1. What is the patchwork planet in Secret Wars (2015) called?\nA) Titan\nB) Sakaar\nC) Battleworld\nD) Counter-Earth\n✅ Answer: C) Battleworld\n\nQ2. Who gathers the heroes in the original Secret Wars (1984)?\nA) The Beyonder\nB) Galactus\nC) Kang\nD) The Watcher\n✅ Answer: A) The Beyonder\n\nQ3. In the comics, what happens when two universes collide?\nA) A blip\nB) A nexus event\nC) An incursion\nD) A convergence\n✅ Answer: C) An incursion\n\nQ4. Whose power does Doom steal in Secret Wars (2015)?\nA) Thanos's\nB) The Beyonders'\nC) The Celestials'\nD) Galactus's\n✅ Answer: B) The Beyonders'\n\nQ5. In classic comics, what made Doom's face worse?\nA) A fight with Reed\nB) A Hulk punch\nC) Putting on his mask while it was red-hot\nD) A curse from his mother\n✅ Answer: C) Putting on his mask while it was red-hot",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-13-count",
+          "kind": "Countdown",
+          "title": "Countdown: 4 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-13-poll",
+          "kind": "Poll",
+          "title": "Poll: Will Doom show his face in Doomsday?",
+          "done": false,
+          "notes": "Will Doom show his face in Doomsday?\n• Yes\n• No",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-13-share",
+          "kind": "Share",
+          "title": "Share today's upload: What Could Happen to the Multiverse?",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-14": {
+      "stories": [
+        {
+          "id": "2026-12-14-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Doomsday predictions",
+          "done": false,
+          "notes": "Q1. Which phase of the MCU does Avengers: Doomsday belong to?\nA) Phase 7\nB) Phase 4\nC) Phase 6\nD) Phase 5\n✅ Answer: C) Phase 6\n\nQ2. Which hero did Robert Downey Jr. play before Doom?\nA) Ant-Man\nB) Hawkeye\nC) Doctor Strange\nD) Iron Man\n✅ Answer: D) Iron Man\n\nQ3. In which year was Avengers: Endgame released?\nA) 2020\nB) 2018\nC) 2019\nD) 2021\n✅ Answer: C) 2019\n\nQ4. Who plays Sue Storm (Invisible Woman)?\nA) Kate Mara\nB) Florence Pugh\nC) Jessica Alba\nD) Vanessa Kirby\n✅ Answer: D) Vanessa Kirby\n\nQ5. Who plays Johnny Storm (Human Torch)?\nA) Paul Mescal\nB) Chris Evans\nC) Joseph Quinn\nD) Michael B. Jordan\n✅ Answer: C) Joseph Quinn",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-14-count",
+          "kind": "Countdown",
+          "title": "Countdown: 3 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-14-poll",
+          "kind": "Poll",
+          "title": "Poll: When are you watching Doomsday?",
+          "done": false,
+          "notes": "When are you watching Doomsday?\n• First day, first show\n• First weekend\n• Later",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-14-share",
+          "kind": "Share",
+          "title": "Share today's upload: Top 10 Doomsday Predictions",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-15": {
+      "stories": [
+        {
+          "id": "2026-12-15-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Ultimate Marvel quiz",
+          "done": false,
+          "notes": "Q1. Which stone was on Vision's forehead?\nA) Mind Stone\nB) Reality Stone\nC) Power Stone\nD) Soul Stone\n✅ Answer: A) Mind Stone\n\nQ2. Who says \"I can do this all day\"?\nA) Spider-Man\nB) Thor\nC) Hawkeye\nD) Captain America\n✅ Answer: D) Captain America\n\nQ3. Who does the final snap that defeats Thanos?\nA) Bruce Banner\nB) Captain Marvel\nC) Tony Stark\nD) Thor\n✅ Answer: C) Tony Stark\n\nQ4. What are Groot's only three words?\nA) We are Groot\nB) I love Groot\nC) Groot is here\nD) I am Groot\n✅ Answer: D) I am Groot\n\nQ5. Where is Black Panther's home?\nA) Latveria\nB) Genosha\nC) Wakanda\nD) Sokovia\n✅ Answer: C) Wakanda",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-15-count",
+          "kind": "Countdown",
+          "title": "Countdown: 2 days to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-15-poll",
+          "kind": "Poll",
+          "title": "Poll: Which Road to Doomsday videos did you like most?",
+          "done": false,
+          "notes": "Which Road to Doomsday videos did you like most?\n• Movie recaps\n• Character journeys\n• Quizzes\n• Theories",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-15-share",
+          "kind": "Share",
+          "title": "Share today's upload: Ultimate Doomsday Quiz",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    },
+    "2026-12-16": {
+      "stories": [
+        {
+          "id": "2026-12-16-trivia",
+          "kind": "Trivia",
+          "title": "Marvel Trivia: 5 questions on Everything before Doomsday",
+          "done": false,
+          "notes": "Q1. Who carries the Captain America shield now?\nA) Steve Rogers\nB) Bucky Barnes\nC) John Walker\nD) Sam Wilson\n✅ Answer: D) Sam Wilson\n\nQ2. Who now holds the timelines together at the end of time?\nA) Doctor Strange\nB) Loki\nC) Wanda\nD) Kang\n✅ Answer: B) Loki\n\nQ3. Which Earth do the Fantastic Four come from in First Steps?\nA) Earth-828\nB) Earth-199999\nC) Earth-838\nD) Earth-616\n✅ Answer: A) Earth-828\n\nQ4. Who plays Wolverine in Deadpool & Wolverine?\nA) Tom Hardy\nB) Hugh Jackman\nC) Daniel Radcliffe\nD) Taron Egerton\n✅ Answer: B) Hugh Jackman\n\nQ5. When does Avengers: Doomsday release in India?\nA) 1 May 2026\nB) 17 December 2026\nC) 7 May 2027\nD) 18 December 2025\n✅ Answer: B) 17 December 2026",
+          "time": "13:30"
+        },
+        {
+          "id": "2026-12-16-count",
+          "kind": "Countdown",
+          "title": "Countdown: 1 day to Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "09:00"
+        },
+        {
+          "id": "2026-12-16-poll",
+          "kind": "Poll",
+          "title": "Poll: Doomsday tomorrow! Your hype level?",
+          "done": false,
+          "notes": "Doomsday tomorrow! Your hype level?\n• 100% 🔥\n• Very excited\n• Just curious",
+          "time": "17:00"
+        },
+        {
+          "id": "2026-12-16-share",
+          "kind": "Share",
+          "title": "Share today's upload: Everything to Remember Before Watching Avengers: Doomsday",
+          "done": false,
+          "notes": "",
+          "time": "20:30"
+        }
+      ]
+    }
+  },
+  "_rev": 2,
+  "updatedAt": "2026-11-19T13:09:59.813Z"
+}

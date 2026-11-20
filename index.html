@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road to Doomsday Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column "mission dossier" — sticky countdown header, then collapsible phase panels of item rows. Single dark look (Doom's steel + emerald), by choice. */
+:root {
+  --bg: #0d1113;
+  --panel: #151b1e;
+  --panel-2: #1c2427;
+  --line: #2a3438;
+  --fg: #e3e9e6;
+  --muted: #8a9893;
+  --accent: #3ddc84;
+  --accent-ink: #062814;
+  --accent-soft: rgba(61, 220, 132, .13);
+  --steel: #9fb3bd;
+  --danger: #ff6b5e;
+  --short: #6fc3ff;
+  --long: #e7b35a;
+  --font-display: "Chakra Petch", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.45 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 860px; margin: 0 auto; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg);
+  padding-block: 20px 12px;
+  border-bottom: 1px solid var(--line);
+  display: grid; gap: 12px;
+}
+.title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+h1 { font: 700 26px/1.1 var(--font-display); letter-spacing: .02em; margin: 0; text-transform: uppercase; text-wrap: balance; }
+h1 span { color: var(--accent); }
+.countdown { font: 500 13px var(--font-mono); color: var(--steel); white-space: nowrap; }
+.countdown b { color: var(--accent); font-size: 18px; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.stats b { color: var(--fg); font-weight: 600; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { background: transparent; border: 0; padding: 5px 10px; font-size: 12.5px; color: var(--muted); }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+.sync { margin-left: auto; font: 500 11.5px var(--font-mono); color: var(--muted); }
+.sync.err { color: var(--danger); }
+
+main { display: grid; gap: 14px; padding-top: 16px; }
+.phase { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.phase-head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; }
+.toggle { background: none; border: 0; width: 28px; height: 28px; color: var(--muted); border-radius: 4px; flex: none; }
+.toggle svg { transition: transform .15s; }
+.phase.closed .toggle svg { transform: rotate(-90deg); }
+.phase-no { font: 600 11px var(--font-mono); color: var(--accent); letter-spacing: .08em; text-transform: uppercase; flex: none; }
+.phase-title { flex: 1; min-width: 0; background: transparent; border: 1px solid transparent; border-radius: 4px; padding: 4px 6px; font: 600 16px var(--font-display); letter-spacing: .02em; }
+.phase-title:hover { border-color: var(--line); }
+.phase-title:focus { border-color: var(--accent); background: var(--panel-2); outline: none; }
+.phase-count { font: 500 11.5px var(--font-mono); color: var(--muted); flex: none; }
+.icon-btn { background: none; border: 1px solid transparent; color: var(--muted); border-radius: 4px; width: 28px; height: 28px; display: inline-grid; place-items: center; flex: none; }
+.icon-btn:hover { border-color: var(--line); color: var(--fg); }
+.icon-btn.del:hover { color: var(--danger); border-color: var(--danger); }
+.icon-btn:disabled { opacity: .3; pointer-events: none; }
+.phase.closed .items, .phase.closed .add-row { display: none; }
+
+.items { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.item { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 6px 10px; align-items: center; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+.item.done .item-title { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.num { font: 500 12px var(--font-mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.item-title { width: 100%; background: transparent; border: 1px solid transparent; border-radius: 4px; padding: 4px 6px; font-size: 14px; }
+.item-title:hover { border-color: var(--line); }
+.item-title:focus { border-color: var(--accent); background: var(--panel-2); outline: none; }
+.controls { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.fmt { display: inline-flex; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+.fmt button { background: transparent; border: 0; padding: 4px 8px; font: 600 11px var(--font-mono); color: var(--muted); letter-spacing: .03em; }
+.fmt button + button { border-left: 1px solid var(--line); }
+.fmt button[data-f="short"][aria-pressed="true"] { background: var(--short); color: #04202f; }
+.fmt button[data-f="long"][aria-pressed="true"] { background: var(--long); color: #2b1b00; }
+.fmt button[data-f="both"][aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.fmt button[data-f="one"][aria-pressed="true"] { background: var(--steel); color: #0d1113; }
+.status { background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; padding: 3px 6px; font-size: 12px; }
+.status.s-done { color: var(--accent); border-color: var(--accent); }
+.status.s-scripting { color: var(--short); }
+.status.s-recorded { color: var(--long); }
+.date { background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; padding: 2px 6px; font: 500 12px var(--font-mono); color: var(--fg); width: 132px; }
+.date.empty { color: var(--muted); border-style: dashed; }
+.date.late { color: var(--danger); border-color: var(--danger); }
+.date.today { color: var(--accent); border-color: var(--accent); }
+.stats .late { color: var(--danger); }
+.move { background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; padding: 3px 4px; font-size: 12px; color: var(--muted); max-width: 120px; }
+
+.add-row { display: flex; gap: 8px; padding: 10px 12px; }
+.add-row input { flex: 1; min-width: 0; background: var(--panel-2); border: 1px dashed var(--line); border-radius: 5px; padding: 7px 10px; }
+.add-row input:focus { border-style: solid; border-color: var(--accent); outline: none; }
+.btn { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 5px; padding: 7px 14px; font-weight: 600; font-size: 13px; }
+.btn.ghost { background: transparent; color: var(--accent); border: 1px dashed var(--accent); }
+.add-phase { display: flex; justify-content: center; padding-top: 4px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: 0; }
+
+.state-msg { border: 1px dashed var(--line); border-radius: 8px; padding: 28px 20px; text-align: center; color: var(--muted); }
+.state-msg strong { display: block; color: var(--fg); font: 600 16px var(--font-display); margin-bottom: 4px; }
+
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; display: flex; gap: 14px; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,.5); z-index: 20; max-width: calc(100% - 32px); }
+.toast button { background: none; border: 0; color: var(--accent); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .item { grid-template-columns: 28px minmax(0, 1fr); }
+  .controls { grid-column: 2; justify-content: flex-start; }
+  h1 { font-size: 21px; }
+  .sync { margin-left: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .toggle svg { transition: none; } }
+/* ---- day plan ---- */
+.dayplan { margin-top: 16px; background: var(--panel); border: 1px solid var(--accent); border-radius: 10px; padding: 14px 14px 10px; display: grid; gap: 12px; }
+.dayplan:empty { display: none; }
+[hidden] { display: none !important; }
+.day-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.day-nav h2 { margin: 0; font: 700 20px/1.1 var(--font-display); letter-spacing: .02em; text-transform: uppercase; flex: 1; min-width: 0; }
+.day-nav h2 small { display: block; font: 500 11.5px var(--font-mono); color: var(--accent); letter-spacing: .06em; margin-bottom: 3px; }
+.day-nav .btn-sm { background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; padding: 4px 10px; font-size: 12.5px; color: var(--fg); }
+.day-nav .btn-sm:disabled { opacity: .35; }
+.day-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+@media (max-width: 720px) { .day-cols { grid-template-columns: minmax(0, 1fr); } }
+.day-block h3 { margin: 0 0 6px; font: 600 11.5px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--steel); display: flex; justify-content: space-between; }
+.day-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.day-row { display: flex; align-items: center; gap: 8px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+.day-row.is-done { opacity: .6; }
+.day-row.is-done .day-text { text-decoration: line-through; }
+.day-text { flex: 1; min-width: 0; background: transparent; border: 1px solid transparent; border-radius: 4px; padding: 3px 5px; font-size: 13.5px; }
+.day-text:focus { border-color: var(--accent); outline: none; background: var(--panel); }
+span.day-text { overflow-wrap: anywhere; }
+.chip { font: 600 10.5px var(--font-mono); padding: 2px 6px; border-radius: 4px; flex: none; }
+.chip.short { background: var(--short); color: #04202f; }
+.chip.long { background: var(--long); color: #2b1b00; }
+.chip.both { background: var(--accent); color: var(--accent-ink); }
+.chip.one { background: var(--steel); color: #0d1113; }
+.chip.story { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.day-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.day-row details { flex-basis: 100%; }
+.story-row { flex-wrap: wrap; }
+.story-row summary { font-size: 12px; color: var(--muted); cursor: pointer; padding-left: 26px; }
+.story-row textarea { width: 100%; min-height: 110px; field-sizing: content; max-height: 70vh; margin-top: 6px; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; color: var(--fg); font: 13px/1.45 var(--font-body); padding: 8px; resize: vertical; }
+.times { flex-basis: 100%; display: flex; gap: 10px; flex-wrap: wrap; padding-left: 26px; }
+.tpart { display: inline-flex; align-items: center; gap: 5px; font: 500 11px var(--font-mono); color: var(--muted); }
+.tpart input, .stime { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 1px 4px; font: 500 12px var(--font-mono); color: var(--fg); }
+.stime { flex: none; width: 112px; }
+.day-empty { color: var(--muted); font-size: 13px; padding: 6px 2px; }
+.day-add { display: flex; gap: 6px; margin-top: 6px; }
+.day-add input { flex: 1; min-width: 0; background: var(--panel-2); border: 1px dashed var(--line); border-radius: 5px; padding: 6px 9px; font-size: 13px; }
+.day-add .btn { padding: 5px 12px; }
+.view-only .tools { display: none; }
+.tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.tools button, .tools label { background: transparent; border: 1px solid var(--line); border-radius: 5px; padding: 4px 10px; font-size: 12px; color: var(--muted); cursor: pointer; }
+.tools button:hover, .tools label:hover { color: var(--fg); border-color: var(--steel); }
+@media (max-width: 640px) {
+  .countdown { white-space: normal; }
+  .seg button { padding: 5px 8px; }
+  .filters { gap: 6px; }
+  .day-nav h2 { flex-basis: 100%; }
+  .story-row .day-text { order: 5; flex-basis: 100%; padding-left: 26px; }
+  .story-row details { order: 6; }
+  .story-row .times { order: 7; }
+  .story-row .icon-btn.del { margin-left: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="title-row">
+      <h1>Road to <span>Doomsday</span></h1>
+      <div class="countdown" id="countdown"></div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="filters">
+      <div class="seg" id="f-status" role="group" aria-label="Filter by status">
+        <button data-v="all" aria-pressed="true">All</button>
+        <button data-v="pending" aria-pressed="false">Pending</button>
+        <button data-v="done" aria-pressed="false">Done</button>
+      </div>
+      <div class="seg" id="f-format" role="group" aria-label="Filter by format">
+        <button data-v="all" aria-pressed="true">Any</button>
+        <button data-v="short" aria-pressed="false">Short</button>
+        <button data-v="long" aria-pressed="false">Long</button>
+        <button data-v="both" aria-pressed="false">S+L</button>
+        <button data-v="one" aria-pressed="false">Single</button>
+      </div>
+      <span class="sync" id="sync"></span>
+    </div>
+    <div class="tools">
+      <button id="export" type="button">Export backup</button>
+      <label for="import">Import backup</label>
+      <input id="import" type="file" accept="application/json,.json" hidden>
+      <button id="reset" type="button">Reset to original list</button>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--short)"></i>Short = Reel/Short</span>
+      <span><i style="background:var(--long)"></i>Long = YouTube main</span>
+      <span><i style="background:var(--accent)"></i>S+L = both</span>
+      <span><i style="background:var(--steel)"></i>Single = one video (quiz, giveaway…)</span>
+    </div>
+  </header>
+
+  <section class="dayplan" id="today" aria-label="Day plan"></section>
+
+  <main id="main">
+    <div class="state-msg"><strong>Loading the plan…</strong>Phases and episodes appear here once the saved plan loads.</div>
+  </main>
+</div>
+<div class="toast" id="toast" hidden><span id="toast-msg"></span><button id="toast-undo">Undo</button></div>
+
+<script>
+(() => {
+  const RELEASE = new Date(2026, 11, 17); // 17 Dec 2026, local midnight; release day itself not counted
+  const FMT = [["short","S"],["long","L"],["both","S+L"],["one","1"]];
+  const FMT_LABEL = { short: "Short", long: "Long", both: "Short + Long", one: "Single video" };
+  const STATUS = [["planned","Planned"],["scripting","Scripting"],["recorded","Recorded"],["done","Done"]];
+  const $ = (s, r = document) => r.querySelector(s);
+  const main = $("#main"), syncEl = $("#sync");
+
+  let state = null;          // { phases: [{id,title,items:[{id,title,format,status}]}] }
+  // Editing only on this computer (npm run plan). Anywhere else (GitHub Pages) the page is view-only.
+  const canWrite = ["localhost", "127.0.0.1"].includes(location.hostname);
+  const RO = canWrite ? "" : " disabled";
+  if (!canWrite) document.documentElement.classList.add("view-only");
+  const KEY = "rtd-plan";
+  let filterStatus = "all", filterFormat = "all";
+  let closed = new Set();
+  try { closed = new Set(JSON.parse(localStorage.getItem("rtd-closed") || "[]")); } catch (e) {}
+  const saveClosed = () => { try { localStorage.setItem("rtd-closed", JSON.stringify([...closed])); } catch (e) {} };
+
+  const uid = () => Math.random().toString(36).slice(2, 10);
+  const clone = (o) => JSON.parse(JSON.stringify(o));
+
+  // countdown
+  function tick() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const days = Math.round((RELEASE - today) / 86400000); // today counts, 17 Dec does not
+    $("#countdown").innerHTML = days > 0
+      ? `<b>${days}</b> day${days === 1 ? "" : "s"} left to finish · deadline 16 Dec · Doomsday 17 Dec`
+      : `Avengers: Doomsday is out`;
+  }
+  tick(); setInterval(tick, 60000);
+
+  // ---- saving: browser storage on this computer ----
+  // Opened via `npm run plan` (http://localhost) → saves to docs/doomsday-plan.json on disk.
+  // Opened by double-click (file://) → falls back to this browser's storage.
+  const SERVER = location.protocol.startsWith("http");
+  let saveTimer = null, saving = false, again = false;
+  function queueSave() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    if (!SERVER) { setSync("Saved in this browser only (run npm run plan to save to file)"); return; }
+    setSync("Saving…");
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(flush, 400);
+  }
+  async function flush() {
+    if (saving) { again = true; return; }
+    saving = true;
+    try {
+      const r = await fetch("plan.json", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(state, null, 2) });
+      if (r.status === 409) {
+        saving = false; again = false;
+        await load();
+        setSync("The plan file changed outside this tab, so it reloaded. Redo your last change.", true);
+        return;
+      }
+      if (!r.ok) throw new Error(r.status);
+      const j = await r.json().catch(() => ({}));
+      if (j.rev) state._rev = j.rev;
+      setSync("Saved to docs/doomsday-plan.json");
+    } catch (e) { setSync("Couldn't save to file. Is npm run plan still running?", true); }
+    saving = false;
+    if (again) { again = false; flush(); }
+  }
+  function setSync(t, err) { syncEl.textContent = t; syncEl.classList.toggle("err", !!err); }
+  function commit() { render(); queueSave(); }
+
+  // ---- undo ----
+  let undoSnap = null, toastTimer = null;
+  function withUndo(msg, fn) {
+    undoSnap = clone(state);
+    fn();
+    commit();
+    $("#toast-msg").textContent = msg;
+    $("#toast").hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { $("#toast").hidden = true; undoSnap = null; }, 7000);
+  }
+  $("#toast-undo").addEventListener("click", () => {
+    if (!undoSnap) return;
+    state = undoSnap; undoSnap = null; $("#toast").hidden = true; commit();
+  });
+
+  // ---- render ----
+  const chevron = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const upIcon = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 7.5l3-3 3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+  const downIcon = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+  const xIcon = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function visible(it) {
+    if (filterStatus === "done" && it.status !== "done") return false;
+    if (filterStatus === "pending" && it.status === "done") return false;
+    if (filterFormat !== "all" && it.format !== filterFormat) return false;
+    return true;
+  }
+
+  function todayISO() {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  }
+  function dateClass(it) {
+    if (!it.date) return "empty";
+    if (it.status === "done") return "";
+    const t = todayISO();
+    return it.date < t ? "late" : it.date === t ? "today" : "";
+  }
+  const nice = (iso) => new Date(iso + "T00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+
+  function renderStats() {
+    const all = state.phases.flatMap((p) => p.items);
+    const n = (f) => all.filter(f).length;
+    const t = todayISO();
+    const next = all.filter((i) => i.date && i.date >= t && i.status !== "done").sort((a, b) => a.date.localeCompare(b.date))[0];
+    const late = n((i) => i.date && i.date < t && i.status !== "done");
+    const undated = n((i) => !i.date && i.status !== "done");
+    const dateInfo =
+      (next ? `<span>Next upload: <b>${esc(next.title)}</b> · ${next.date === t ? "today" : nice(next.date)}</span>` : "") +
+      (late ? `<span class="late"><b class="late">${late}</b> overdue</span>` : "") +
+      `<span><b>${undated}</b> without a date</span>`;
+    const shorts = n((i) => i.format === "short" || i.format === "both");
+    const longs = n((i) => i.format === "long" || i.format === "both");
+    const singles = n((i) => i.format === "one");
+    $("#stats").innerHTML =
+      `<span><b>${all.length}</b> topics</span>` +
+      `<span><b>${n((i) => i.status === "done")}</b> done</span>` +
+      `<span><b>${shorts}</b> shorts</span>` +
+      `<span><b>${longs}</b> long videos</span>` +
+      `<span><b>${singles}</b> single</span>` +
+      `<span><b>${shorts + longs + singles}</b> uploads total</span>` + dateInfo;
+  }
+
+  function render() {
+    if (!state) return;
+    renderStats();
+    renderToday();
+    const ro = !canWrite ? "disabled" : "";
+    const phaseOpts = state.phases.map((p, i) => `<option value="${p.id}">Phase ${i + 1}</option>`).join("");
+    let num = 0, html = "";
+    state.phases.forEach((p, pi) => {
+      const isClosed = closed.has(p.id);
+      const rows = p.items.map((it, ii) => {
+        num++;
+        if (!visible(it)) return "";
+        return `<li class="item${it.status === "done" ? " done" : ""}" data-p="${p.id}" data-i="${it.id}">
+          <span class="num">${num}</span>
+          <input class="item-title" data-act="title" value="${esc(it.title)}" aria-label="Topic ${num} title" ${ro}>
+          <div class="controls">
+            <div class="fmt" role="group" aria-label="Format">${FMT.map(([f, l]) =>
+              `<button data-act="fmt" data-f="${f}" aria-pressed="${it.format === f}" title="${FMT_LABEL[f]}" ${ro}>${l}</button>`).join("")}</div>
+            <input type="date" class="date ${dateClass(it)}" data-act="date" value="${it.date || ""}" max="2026-12-16" aria-label="Upload date" title="Upload date">
+            <select class="status s-${it.status}" data-act="status" aria-label="Status" ${ro}>${STATUS.map(([v, l]) =>
+              `<option value="${v}"${v === it.status ? " selected" : ""}>${l}</option>`).join("")}</select>
+            <button class="icon-btn" data-act="up" aria-label="Move up" ${ii === 0 && pi === 0 ? "disabled" : ro}>${upIcon}</button>
+            <button class="icon-btn" data-act="down" aria-label="Move down" ${ii === p.items.length - 1 && pi === state.phases.length - 1 ? "disabled" : ro}>${downIcon}</button>
+            <select class="move" data-act="move" aria-label="Move to phase" ${ro}><option value="">Move…</option>${phaseOpts}</select>
+            <button class="icon-btn del" data-act="del" aria-label="Delete topic" ${ro}>${xIcon}</button>
+          </div>
+        </li>`;
+      }).join("");
+      const shown = p.items.filter(visible).length;
+      html += `<section class="phase${isClosed ? " closed" : ""}" data-p="${p.id}">
+        <div class="phase-head">
+          <button class="toggle" data-act="toggle" aria-expanded="${!isClosed}" aria-label="Show or hide phase">${chevron}</button>
+          <span class="phase-no">Phase ${pi + 1}</span>
+          <input class="phase-title" data-act="ptitle" value="${esc(p.title)}" aria-label="Phase ${pi + 1} name" ${ro}>
+          <span class="phase-count">${shown === p.items.length ? p.items.length : shown + "/" + p.items.length}</span>
+          <button class="icon-btn" data-act="pup" aria-label="Move phase up" ${pi === 0 ? "disabled" : ro}>${upIcon}</button>
+          <button class="icon-btn" data-act="pdown" aria-label="Move phase down" ${pi === state.phases.length - 1 ? "disabled" : ro}>${downIcon}</button>
+          <button class="icon-btn del" data-act="pdel" aria-label="Delete phase" ${ro}>${xIcon}</button>
+        </div>
+        <ul class="items">${rows}</ul>
+        ${canWrite ? `<form class="add-row" data-act="add"><input id="add-${p.id}" placeholder="Add a topic to this phase…" aria-label="New topic for phase ${pi + 1}"><button class="btn" type="submit">Add</button></form>` : ""}
+      </section>`;
+    });
+    if (canWrite) html += `<div class="add-phase"><button class="btn ghost" data-act="addphase">+ Add phase</button></div>`;
+    if (!state.phases.length) html = `<div class="state-msg"><strong>No phases yet</strong>Add a phase to start the plan.</div>` + html;
+    main.innerHTML = html;
+  }
+
+  // ---- interactions ----
+  const findPhase = (id) => state.phases.find((p) => p.id === id);
+  function locate(el) {
+    const li = el.closest(".item"), sec = el.closest(".phase");
+    const p = sec && findPhase(sec.dataset.p);
+    const idx = li && p ? p.items.findIndex((i) => i.id === li.dataset.i) : -1;
+    return { p, idx, it: idx >= 0 ? p.items[idx] : null };
+  }
+
+  main.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-act]");
+    if (!b || b.tagName === "INPUT" || b.tagName === "SELECT" || b.tagName === "FORM") return;
+    const act = b.dataset.act;
+    if (act === "toggle") {
+      const id = b.closest(".phase").dataset.p;
+      closed.has(id) ? closed.delete(id) : closed.add(id); saveClosed(); render(); return;
+    }
+    if (act === "addphase") {
+      const p = { id: uid(), title: "New phase", items: [] };
+      state.phases.push(p); commit();
+      const inp = main.querySelector(`.phase[data-p="${p.id}"] .phase-title`); inp && (inp.focus(), inp.select());
+      return;
+    }
+    if (!canWrite) return;
+    const { p, idx, it } = locate(b);
+    const pi = state.phases.indexOf(p);
+    if (act === "fmt" && it) { it.format = b.dataset.f; commit(); }
+    else if (act === "del" && it) withUndo(`Deleted "${it.title}"`, () => p.items.splice(idx, 1));
+    else if (act === "up" && it) {
+      if (idx > 0) [p.items[idx - 1], p.items[idx]] = [p.items[idx], p.items[idx - 1]];
+      else if (pi > 0) { p.items.splice(idx, 1); state.phases[pi - 1].items.push(it); }
+      commit();
+    } else if (act === "down" && it) {
+      if (idx < p.items.length - 1) [p.items[idx + 1], p.items[idx]] = [p.items[idx], p.items[idx + 1]];
+      else if (pi < state.phases.length - 1) { p.items.splice(idx, 1); state.phases[pi + 1].items.unshift(it); }
+      commit();
+    } else if (act === "pup" && pi > 0) { [state.phases[pi - 1], state.phases[pi]] = [state.phases[pi], state.phases[pi - 1]]; commit(); }
+    else if (act === "pdown" && pi < state.phases.length - 1) { [state.phases[pi + 1], state.phases[pi]] = [state.phases[pi], state.phases[pi + 1]]; commit(); }
+    else if (act === "pdel" && p) withUndo(`Deleted phase "${p.title}" (${p.items.length} topics)`, () => state.phases.splice(pi, 1));
+  });
+
+  main.addEventListener("change", (e) => {
+    const el = e.target; if (!canWrite) return;
+    const act = el.dataset.act;
+    const { p, idx, it } = locate(el);
+    if (act === "title" && it) { const v = el.value.trim(); if (v && v !== it.title) { it.title = v; commit(); } else el.value = it.title; }
+    else if (act === "ptitle" && p) { const v = el.value.trim(); if (v && v !== p.title) { p.title = v; commit(); } else el.value = p.title; }
+    else if (act === "status" && it) { it.status = el.value; commit(); }
+    else if (act === "date" && it) { it.date = el.value; commit(); }
+    else if (act === "move" && it && el.value) {
+      const to = findPhase(el.value);
+      if (to && to !== p) { p.items.splice(idx, 1); to.items.push(it); commit(); } else el.value = "";
+    }
+  });
+  main.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && (e.target.dataset.act === "title" || e.target.dataset.act === "ptitle")) { e.preventDefault(); e.target.blur(); }
+  });
+  main.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const form = e.target, inp = form.querySelector("input"), v = inp.value.trim();
+    if (!v || !canWrite) return;
+    const p = findPhase(form.closest(".phase").dataset.p);
+    p.items.push({ id: uid(), title: v, format: "both", status: "planned" });
+    commit();
+    const again = $("#add-" + p.id); again && again.focus();
+  });
+
+  function bindSeg(id, set) {
+    $(id).addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      $(id).querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      set(b.dataset.v); render();
+    });
+  }
+  bindSeg("#f-status", (v) => (filterStatus = v));
+  bindSeg("#f-format", (v) => (filterFormat = v));
+
+  // ---- day plan (front panel) ----
+  const PLAN_START = "2026-11-19", PLAN_END = "2026-12-16";
+  const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const shift = (s, n) => { const d = new Date(s + "T00:00"); d.setDate(d.getDate() + n); return iso(d); };
+  const daysBetween = (a, b) => Math.round((new Date(b + "T00:00") - new Date(a + "T00:00")) / 86400000);
+  let viewDate = (() => { const t = todayISO(); return t < PLAN_START ? PLAN_START : t > PLAN_END ? PLAN_END : t; })();
+
+  const PART_LABEL = { short: "Short", long: "Long", one: "Video" };
+  const partsOf = (v) => v.format === "both" ? ["short", "long"] : [v.format];
+  const firstTime = (v) => partsOf(v).map((p) => (v.times && v.times[p]) || "99").sort()[0];
+  const videosOn = (date) => state.phases.flatMap((p) => p.items).filter((i) => i.date === date);
+  const shortName = (t) => t.split(" – ")[0].trim();
+  function defaultStories(date) {
+    const vids = videosOn(date);
+    const theme = vids.length ? vids.map((v) => shortName(v.title)).slice(0, 2).join(" & ") : "Marvel";
+    const left = daysBetween(date, "2026-12-17");
+    return [
+      { id: date + "-trivia", kind: "Trivia", title: `Marvel Trivia: 5 quiz questions on ${theme}`, done: false, notes: "1. \n2. \n3. \n4. \n5. " },
+      { id: date + "-count", kind: "Countdown", title: left > 0 ? `Countdown: ${left} day${left === 1 ? "" : "s"} to Avengers: Doomsday` : "Doomsday is here!", done: false, notes: "" },
+      { id: date + "-poll", kind: "Poll", title: `Poll: ask fans about ${theme}`, done: false, notes: "" },
+      { id: date + "-share", kind: "Share", title: vids.length ? `Share today's upload: ${shortName(vids[0].title)}` : "Share a clip from the latest video", done: false, notes: "" },
+    ];
+  }
+  const dayView = (date) => (state.days && state.days[date]) || { stories: defaultStories(date) };
+  function dayData(date) {   // materialise before editing
+    if (!state.days) state.days = {};
+    if (!state.days[date]) state.days[date] = { stories: defaultStories(date) };
+    return state.days[date];
+  }
+
+  const todayEl = $("#today");
+  function renderToday() {
+    const date = viewDate, t = todayISO();
+    const vids = videosOn(date);
+    const stories = dayView(date).stories;
+    const dayNo = daysBetween(PLAN_START, date) + 1, total = daysBetween(PLAN_START, PLAN_END) + 1;
+    const label = date === t ? "Today" : date === shift(t, 1) ? "Tomorrow" : date === shift(t, -1) ? "Yesterday" : "";
+    const inRange = date >= PLAN_START && date <= PLAN_END;
+    const vDone = vids.filter((v) => v.status === "done").length, sDone = stories.filter((s) => s.done).length;
+    todayEl.innerHTML = `
+      <div class="day-nav">
+        <h2><small>${label ? label + " · " : ""}${inRange ? `Day ${dayNo} of ${total}` : "Outside the plan"}</small>${new Date(date + "T00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}</h2>
+        <button class="btn-sm" data-day="prev" aria-label="Previous day">‹ Prev</button>
+        <input type="date" class="date" id="day-pick" value="${date}" min="${PLAN_START}" max="${PLAN_END}" aria-label="Pick a day">
+        <button class="btn-sm" data-day="next" aria-label="Next day">Next ›</button>
+        <button class="btn-sm" data-day="today" ${date === t ? "disabled" : ""}>Today</button>
+      </div>
+      <div class="day-cols">
+        <div class="day-block">
+          <h3><span>Videos to upload</span><span>${vDone}/${vids.length}</span></h3>
+          <ul class="day-list">${vids.length ? vids.slice().sort((a, b) => firstTime(a).localeCompare(firstTime(b))).map((v) => `
+            <li class="day-row story-row${v.status === "done" ? " is-done" : ""}" data-vid="${v.id}">
+              <input type="checkbox" data-act="vdone" ${v.status === "done" ? "checked" : ""}${RO} aria-label="Mark uploaded">
+              <span class="chip ${v.format}">${{ short: "S", long: "L", both: "S+L", one: "1" }[v.format]}</span>
+              <span class="day-text">${esc(v.title)}</span>
+              <div class="times">${partsOf(v).map((pt) => `<label class="tpart"><span>${PART_LABEL[pt]}</span><input type="time" data-act="vtime" data-part="${pt}" value="${(v.times && v.times[pt]) || ""}"${RO}></label>`).join("")}</div>
+            </li>`).join("") : `<li class="day-empty">No videos scheduled. Give a topic this date in the list below.</li>`}
+          </ul>
+        </div>
+        <div class="day-block">
+          <h3><span>Stories</span><span>${sDone}/${stories.length}</span></h3>
+          <ul class="day-list">${stories.slice().sort((a, b) => (a.time || "99").localeCompare(b.time || "99")).map((s) => `
+            <li class="day-row story-row${s.done ? " is-done" : ""}" data-sid="${s.id}">
+              <input type="checkbox" data-act="sdone" ${s.done ? "checked" : ""}${RO} aria-label="Mark posted">
+              <input type="time" class="stime" data-act="stime" value="${s.time || ""}"${RO} aria-label="Post time">
+              <span class="chip story">${esc(s.kind || "Story")}</span>
+              <span class="day-text" contenteditable="${canWrite}" spellcheck="false" data-act="stitle" role="textbox" aria-label="Story">${esc(s.title)}</span>
+              ${canWrite ? `<button class="icon-btn del" data-act="sdel" aria-label="Delete story">${xIcon}</button>` : ""}
+              <details${s.notes && s.notes.replace(/[\d.\s]/g, "") ? "" : ""}><summary>${s.kind === "Trivia" ? "Questions & answers" : s.kind === "Poll" ? "Poll question & options" : "Notes"}</summary>
+                <textarea data-act="snotes"${canWrite ? "" : " readonly"} aria-label="Notes for ${esc(s.title)}">${esc(s.notes || "")}</textarea></details>
+            </li>`).join("")}
+          </ul>
+          ${canWrite ? "" : "<!--"}<form class="day-add" id="story-add"><input id="story-new" placeholder="Add a story for this day…" aria-label="New story"><button class="btn" type="submit">Add</button></form>${canWrite ? "" : "-->"}
+        </div>
+      </div>`;
+  }
+
+  todayEl.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-day], [data-act='sdel']");
+    if (!b) return;
+    if (b.dataset.day === "prev") viewDate = shift(viewDate, -1);
+    else if (b.dataset.day === "next") viewDate = shift(viewDate, 1);
+    else if (b.dataset.day === "today") viewDate = todayISO();
+    else if (b.dataset.act === "sdel") {
+      const id = b.closest("[data-sid]").dataset.sid;
+      const day = dayData(viewDate), idx = day.stories.findIndex((s) => s.id === id);
+      if (idx >= 0) withUndo(`Deleted story "${day.stories[idx].title}"`, () => day.stories.splice(idx, 1));
+      return;
+    }
+    renderToday();
+  });
+  todayEl.addEventListener("change", (e) => {
+    const el = e.target, act = el.dataset.act;
+    if (el.id === "day-pick") { if (el.value) { viewDate = el.value; renderToday(); } return; }
+    if (act === "vtime") {
+      const it = state.phases.flatMap((p) => p.items).find((i) => i.id === el.closest("[data-vid]").dataset.vid);
+      if (it) { it.times = Object.assign({}, it.times, { [el.dataset.part]: el.value }); commit(); }
+      return;
+    }
+    if (act === "vdone") {
+      const it = state.phases.flatMap((p) => p.items).find((i) => i.id === el.closest("[data-vid]").dataset.vid);
+      if (it) { it.status = el.checked ? "done" : "planned"; commit(); }
+      return;
+    }
+    const row = el.closest("[data-sid]"); if (!row) return;
+    const s = dayData(viewDate).stories.find((x) => x.id === row.dataset.sid); if (!s) return;
+    if (act === "sdone") { s.done = el.checked; commit(); }
+    else if (act === "stime") { s.time = el.value; commit(); }
+    else if (act === "snotes") { s.notes = el.value; queueSave(); }
+  });
+  todayEl.addEventListener("focusout", (e) => {
+    const el = e.target; if (el.dataset.act !== "stitle") return;
+    const row = el.closest("[data-sid]");
+    const s = dayData(viewDate).stories.find((x) => x.id === row.dataset.sid); if (!s) return;
+    const v = el.textContent.trim();
+    if (v && v !== s.title) { s.title = v; commit(); } else el.textContent = s.title;
+  });
+  todayEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && e.target.dataset.act === "stitle") { e.preventDefault(); e.target.blur(); }
+  });
+  todayEl.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const inp = $("#story-new"), v = inp.value.trim(); if (!v) return;
+    dayData(viewDate).stories.push({ id: viewDate + "-" + uid(), kind: "Story", title: v, done: false, notes: "" });
+    commit(); const again = $("#story-new"); again && again.focus();
+  });
+
+  // ---- data ----
+  const SEED = {"phases": [{"id": "p1", "title": "X-Men Universe", "items": [{"id": "t1", "title": "X-Men (2000) – Full Movie Recap", "format": "both", "status": "done"}, {"id": "t2", "title": "Wolverine – Complete Character Journey", "format": "both", "status": "done"}, {"id": "t3", "title": "Professor X, Magneto, Mystique, Cyclops & Jean Grey – Character Journeys", "format": "both", "status": "planned"}, {"id": "t4", "title": "X2: X-Men United – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t5", "title": "Nightcrawler – Character Journey", "format": "both", "status": "planned"}, {"id": "t6", "title": "X-Men – Character Identification Quiz", "format": "one", "status": "planned"}, {"id": "t7", "title": "X-Men – Fan Theories & Doomsday Connections", "format": "both", "status": "planned"}]}, {"id": "p2", "title": "Captain America & Original Avengers", "items": [{"id": "t8", "title": "Captain America: The First Avenger – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t9", "title": "Steve Rogers – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t10", "title": "Bucky Barnes – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t11", "title": "The Avengers (2012) – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t12", "title": "Loki – Character Journey", "format": "both", "status": "planned"}, {"id": "t13", "title": "Original Avengers – Quiz", "format": "one", "status": "planned"}]}, {"id": "p3", "title": "Ant-Man, Wasp & Hulk", "items": [{"id": "t14", "title": "Ant-Man – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t15", "title": "Hulk – Complete MCU Character Journey", "format": "both", "status": "planned"}]}, {"id": "p4", "title": "Infinity Saga", "items": [{"id": "t16", "title": "Avengers: Infinity War – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t17", "title": "Thor – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t18", "title": "Avengers: Endgame – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t19", "title": "Infinity Saga – Ultimate Quiz", "format": "one", "status": "planned"}]}, {"id": "p5", "title": "Loki & The Multiverse", "items": [{"id": "t20", "title": "Loki Season 1 – Full Series Recap", "format": "both", "status": "planned"}, {"id": "t21", "title": "Loki Season 2 – Full Series Recap", "format": "both", "status": "planned"}, {"id": "t22", "title": "Loki – From God of Mischief to God of Stories", "format": "both", "status": "planned"}, {"id": "t23", "title": "TVA – Important Characters & Storyline", "format": "both", "status": "planned"}, {"id": "t24", "title": "What Does Loki's Ending Mean for the Multiverse?", "format": "one", "status": "planned"}, {"id": "t25", "title": "Loki – Fan Theories & Predictions", "format": "both", "status": "planned"}]}, {"id": "p6", "title": "Shang-Chi & Spider-Man", "items": [{"id": "t26", "title": "Shang-Chi and the Legend of the Ten Rings – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t27", "title": "Shang-Chi – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t28", "title": "Spider-Man: No Way Home – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t29", "title": "Peter Parker – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t30", "title": "Spider-Man – Multiverse Quiz", "format": "one", "status": "planned"}]}, {"id": "p7", "title": "Captain Marvel & Cosmic Heroes", "items": [{"id": "t31", "title": "Captain Marvel, Monica Rambeau & Ms. Marvel – Complete Character Journeys", "format": "both", "status": "planned"}]}, {"id": "p8", "title": "Wakanda & New Captain America", "items": [{"id": "t32", "title": "Black Panther: Wakanda Forever – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t33", "title": "Shuri & Namor – Complete Character Journeys", "format": "both", "status": "planned"}, {"id": "t34", "title": "Captain America: Brave New World – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t35", "title": "Sam Wilson – From Falcon to Captain America", "format": "both", "status": "planned"}]}, {"id": "p9", "title": "Deadpool & X-Men Return", "items": [{"id": "t36", "title": "Deadpool & Wolverine – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t37", "title": "Deadpool – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t38", "title": "Gambit – Character History & Comic-Book Background", "format": "both", "status": "planned"}]}, {"id": "p10", "title": "Doctor Strange & Scarlet Witch", "items": [{"id": "t39", "title": "Doctor Strange in the Multiverse of Madness – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t40", "title": "Doctor Strange – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t41", "title": "Wanda Maximoff – Complete Character Journey", "format": "both", "status": "planned"}, {"id": "t42", "title": "Scarlet Witch – Return Theories & Predictions", "format": "one", "status": "planned"}]}, {"id": "p11", "title": "Thunderbolts & New Avengers", "items": [{"id": "t43", "title": "Thunderbolts* – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t44", "title": "Yelena Belova, Sentry, Red Guardian, Ghost & U.S. Agent – Character Journeys", "format": "both", "status": "planned"}, {"id": "t45", "title": "Bucky Barnes – His Journey After Endgame", "format": "both", "status": "planned"}]}, {"id": "p12", "title": "Fantastic Four & Doctor Doom", "items": [{"id": "t46", "title": "The Fantastic Four: First Steps – Full Movie Recap", "format": "both", "status": "planned"}, {"id": "t47", "title": "Doctor Doom – Complete Comic-Book Origin", "format": "both", "status": "planned"}, {"id": "t48", "title": "Doctor Doom – Powers, Intelligence & Technology", "format": "both", "status": "planned"}, {"id": "t49", "title": "Reed Richards vs Doctor Doom – Their Rivalry", "format": "both", "status": "planned"}]}, {"id": "p13", "title": "The Final Doomsday Countdown", "items": [{"id": "t50", "title": "Why Is Doctor Doom Such a Dangerous Villain?", "format": "both", "status": "planned"}, {"id": "t51", "title": "All Confirmed Doomsday Characters – Complete Breakdown", "format": "both", "status": "planned"}, {"id": "t52", "title": "Which Characters Could Form Alliances?", "format": "one", "status": "planned"}, {"id": "t53", "title": "What Could Happen to the Multiverse?", "format": "one", "status": "planned"}, {"id": "t54", "title": "Will Doom Reveal His Face in Doomsday?", "format": "one", "status": "planned"}, {"id": "t55", "title": "Secret Wars – Comic-Book Storyline Explained", "format": "both", "status": "planned"}, {"id": "t56", "title": "Top 10 Doomsday Predictions", "format": "both", "status": "planned"}, {"id": "t57", "title": "Things Marvel Fans Expect from Doomsday", "format": "both", "status": "planned"}, {"id": "t58", "title": "Ultimate Doomsday Quiz", "format": "one", "status": "planned"}, {"id": "t59", "title": "Marvel Character Guessing Game", "format": "one", "status": "planned"}, {"id": "t60", "title": "Road to Doomsday Giveaway", "format": "one", "status": "planned"}, {"id": "t61", "title": "Everything to Remember Before Watching Avengers: Doomsday", "format": "both", "status": "planned"}]}]};
+  async function load() {
+    if (SERVER) {
+      try {
+        const r = await fetch("plan.json", { cache: "no-store" });
+        if (r.ok) {
+          const data = await r.json();
+          if (data && Array.isArray(data.phases)) {
+            state = data;
+            const when = data.updatedAt ? new Date(data.updatedAt).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }) : "";
+            setSync(canWrite ? "Loaded from docs/doomsday-plan.json" : "View-only" + (when ? " · updated " + when : ""));
+            render(); return;
+          }
+        }
+      } catch (e) {}
+    }
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    state = saved && Array.isArray(saved.phases) ? saved : clone(SEED);
+    setSync(SERVER ? "No plan file yet. Your first edit creates it." : saved ? "Saved in this browser only (run npm run plan to save to file)" : "Original list (not edited yet)");
+    render();
+  }
+  $("#export").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    const d = new Date();
+    a.href = URL.createObjectURL(blob);
+    a.download = `doomsday-plan-${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $("#import").addEventListener("change", async (e) => {
+    const f = e.target.files[0]; e.target.value = "";
+    if (!f) return;
+    try {
+      const data = JSON.parse(await f.text());
+      if (!data || !Array.isArray(data.phases)) throw new Error("bad");
+      withUndo("Imported " + f.name, () => { state = data; });
+    } catch (err) { setSync("That file isn't a plan backup.", true); }
+  });
+  $("#reset").addEventListener("click", () => withUndo("Reset to the original list", () => { state = clone(SEED); }));
+  load();
+})();
+</script>
+</body>
+</html>
