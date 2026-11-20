@@ -31,7 +31,7 @@
           "id": "djlpzp2y",
           "title": "Jean Grey Both in MCU and X-Men  – Character Journeys",
           "format": "short",
-          "status": "planned",
+          "status": "done",
           "date": "2026-11-19",
           "times": {
             "short": "20:00"
@@ -1731,6 +1731,6 @@
       ]
     }
   },
-  "_rev": 3,
-  "updatedAt": "2026-11-20T05:34:00.192Z"
+  "_rev": 4,
+  "updatedAt": "2026-11-20T20:00:09.820Z"
 }
